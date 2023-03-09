@@ -142,6 +142,7 @@
 			/obj/item/ammo_magazine/rocket/recoilless/heat = 16,
 			/obj/item/ammo_magazine/rocket/recoilless/cloak = 16,
 			/obj/item/ammo_magazine/rocket/recoilless/smoke = 16,
+			/obj/item/ammo_magazine/rocket/recoilless/plasmaloss = 16,
 		),
 		"Attachments" = list(
 			/obj/item/attachable/bayonet = -1,
@@ -1025,6 +1026,7 @@
 			/obj/item/storage/pill_bottle/packet/tricordrazine = -1,
 			/obj/item/storage/pill_bottle/packet/dylovene = -1,
 			/obj/item/storage/pill_bottle/packet/paracetamol = -1,
+			/obj/item/storage/pill_bottle/packet/isotonic = -1,
 		),
 		"Auto Injector" = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/bicaridine = -1,
@@ -1070,6 +1072,7 @@
 			/obj/item/storage/pill_bottle/packet/tricordrazine = -1,
 			/obj/item/storage/pill_bottle/packet/dylovene = -1,
 			/obj/item/storage/pill_bottle/packet/paracetamol = -1,
+			/obj/item/storage/pill_bottle/packet/isotonic = -1,
 		),
 		"Auto Injector" = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/bicaridine = -1,
