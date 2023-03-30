@@ -39,7 +39,7 @@
 /obj/item/armor_module/storage/on_detach(obj/item/detaching_from, mob/user)
 	time_to_equip = initial(time_to_equip)
 	time_to_unequip = initial(time_to_unequip)
-	UnregisterSignal(parent, list(COMSIG_ATOM_ATTACK_HAND, COMSIG_PARENT_ATTACKBY))
+	UnregisterSignal(parent, list(COMSIG_ATOM_ATTACK_HAND, COMSIG_CLICK_ALT_RIGHT, COMSIG_PARENT_ATTACKBY))
 	storage.master_item = src
 	return ..()
 
@@ -161,7 +161,7 @@
 	can_hold = list(
 		/obj/item/weapon/combat_knife,
 		/obj/item/attachable/bayonetknife,
-		/obj/item/flashlight/flare,
+		/obj/item/explosive/grenade/flare/civilian,
 		/obj/item/explosive/grenade/flare,
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/cell/lasgun,
@@ -200,7 +200,7 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/handheld_charger,
-		/obj/item/multitool,
+		/obj/item/tool/multitool,
 		/obj/item/binoculars/tactical/range,
 		/obj/item/explosive/plastique,
 		/obj/item/explosive/grenade/chem_grenade/razorburn_smol,
