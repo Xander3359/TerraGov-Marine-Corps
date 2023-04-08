@@ -901,7 +901,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
 
-	var/choice = tgui_input_list(usr, "You are about to embark to the ghastly walls of Valhalla. Xenomorph or Marine?", "Join Valhalla", list("Xenomorph", "Marine"))
+	var/choice = tgui_input_list(usr, "You are about to embark to the ghastly walls of Valhalla. Xenomorph or Marine?", "Join Valhalla", list("Xenomorph", "Marine", "Robot"))
 
 	if(choice == "Xenomorph")
 		var/mob/living/carbon/xenomorph/xeno_choice = tgui_input_list(usr, "You are about to embark to the ghastly walls of Valhalla. What xenomorph would you like to have?", "Join Valhalla", GLOB.all_xeno_types)
@@ -917,6 +917,21 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		mind.transfer_to(new_xeno, TRUE)
 		xallhala_job.after_spawn(new_xeno)
 		return
+
+	if(choice == "Robot")
+		var/datum/job/valhalla_job = tgui_input_list(usr, "You are about to embark to the ghastly walls of Valhalla. What job would you like to have?", "Join Valhalla", GLOB.jobs_fallen_marine)
+		if(!valhalla_job)
+			return
+		var/mob/living/carbon/human/new_fallen = new(pick(GLOB.spawns_by_job[/datum/job/fallen/marine]))
+		valhalla_job = SSjob.GetJobType(valhalla_job)
+
+		log_game("[key_name(usr)] has joined Valhalla as a Marine.")
+		client.prefs.copy_to(new_fallen)
+		new_fallen.set_species(/datum/species/robot)
+		new_fallen.apply_assigned_role_to_spawn(valhalla_job)
+		mind.transfer_to(new_fallen, TRUE)
+		valhalla_job.after_spawn(new_fallen)
+
 
 	var/datum/job/valhalla_job = tgui_input_list(usr, "You are about to embark to the ghastly walls of Valhalla. What job would you like to have?", "Join Valhalla", GLOB.jobs_fallen_marine)
 	if(!valhalla_job)
