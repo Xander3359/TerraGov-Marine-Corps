@@ -77,7 +77,7 @@
 		marker_flags = MINIMAP_FLAG_MARINE
 	else if(iff_signal == TGMC_REBEL_IFF)
 		marker_flags = MINIMAP_FLAG_MARINE_REBEL
-	else if(iff_signal == SON_OF_MARS_IFF)
+	else if(iff_signal == SOM_IFF)
 		marker_flags = MINIMAP_FLAG_MARINE_SOM
 	else
 		marker_flags = MINIMAP_FLAG_MARINE
@@ -425,7 +425,7 @@
 		return FALSE
 	for(var/turf/T AS in path)
 		var/obj/effect/particle_effect/smoke/smoke = locate() in T
-		if(smoke && smoke.opacity)
+		if(smoke?.opacity)
 			return FALSE
 
 		if(IS_OPAQUE_TURF(T) || T.density && !(T.flags_pass & PASSPROJECTILE) && !(T.type in ignored_terrains))
