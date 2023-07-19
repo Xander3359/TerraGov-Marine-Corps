@@ -3,24 +3,6 @@
 	icon_state = "empdisable"
 	duration = 0.5 SECONDS
 
-/obj/effect/temp_visual/explosion
-	name = "explosion"
-	icon = 'icons/effects/explosion.dmi'
-	icon_state = "explosion"
-	duration = 8
-	light_system = STATIC_LIGHT
-
-/obj/effect/temp_visual/explosion/Initialize(mapload, radius, color)
-	. = ..()
-	set_light(radius, radius, color)
-
-	var/image/I = image(icon, src, icon_state, 10, pixel_x = -16, pixel_y = -16)
-	var/matrix/rotate = matrix()
-	rotate.Turn(rand(0, 359))
-	I.transform = rotate
-	overlays += I //we use an overlay so the explosion and light source are both in the correct location
-	icon_state = null
-
 GLOBAL_LIST_EMPTY(blood_particles)
 /particles/splatter
 	icon = 'icons/effects/effects.dmi'
@@ -141,6 +123,23 @@ GLOBAL_LIST_EMPTY(blood_particles)
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/obj/effect/temp_visual/ob_impact
+	name = "ob impact animation"
+	layer = ABOVE_ALL_MOB_LAYER
+	duration = 0.7 SECONDS
+	density = FALSE
+	opacity = FALSE
+
+/obj/effect/temp_visual/ob_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	appearance = owner.appearance
+	transform = matrix().Turn(-90)
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 600
+	animate(src, pixel_y = -5, time=5)
+	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
+
 /obj/effect/temp_visual/heavyimpact
 	name = "heavy impact"
 	icon = 'icons/effects/heavyimpact.dmi'
@@ -154,34 +153,21 @@ GLOBAL_LIST_EMPTY(blood_particles)
 /obj/effect/temp_visual/order
 	icon = 'icons/Marine/marine-items.dmi'
 	var/icon_state_on
-	hud_possible = list(SQUAD_HUD_TERRAGOV, SQUAD_HUD_REBEL, SQUAD_HUD_SOM)
+	hud_possible = list(SQUAD_HUD_TERRAGOV, SQUAD_HUD_SOM)
 	duration = ORDER_DURATION
 	layer = TURF_LAYER
 
 /obj/effect/temp_visual/order/Initialize(mapload, faction)
 	. = ..()
 	prepare_huds()
-	var/marker_flags
-	var/hud_type
-	if(faction == FACTION_TERRAGOV)
-		hud_type = DATA_HUD_SQUAD_TERRAGOV
-	else if(faction == FACTION_TERRAGOV_REBEL)
-		hud_type = DATA_HUD_SQUAD_REBEL
-	else if(faction == FACTION_SOM)
-		hud_type = DATA_HUD_SQUAD_SOM
-	else
-		return
-	if(hud_type == DATA_HUD_SQUAD_TERRAGOV)
-		marker_flags = MINIMAP_FLAG_MARINE
-	else if(hud_type == DATA_HUD_SQUAD_REBEL)
-		marker_flags = MINIMAP_FLAG_MARINE_REBEL
-	else if(hud_type == DATA_HUD_SQUAD_SOM)
-		marker_flags = MINIMAP_FLAG_MARINE_SOM
-	else
-		return
-	var/datum/atom_hud/squad/squad_hud = GLOB.huds[hud_type]
-	squad_hud.add_to_hud(src)
-	SSminimaps.add_marker(src, marker_flags, image('icons/UI_icons/map_blips_large.dmi', null, icon_state_on))
+
+	var/datum/atom_hud/squad_hud = GLOB.huds[GLOB.faction_to_data_hud[faction]]
+	if(squad_hud)
+		squad_hud.add_to_hud(src)
+
+	var/marker_flags = GLOB.faction_to_minimap_flag[faction]
+	if(marker_flags)
+		SSminimaps.add_marker(src, marker_flags, image('icons/UI_icons/map_blips_large.dmi', null, icon_state_on))
 	set_visuals(faction)
 
 /obj/effect/temp_visual/order/attack_order
@@ -203,14 +189,8 @@ GLOBAL_LIST_EMPTY(blood_particles)
 
 ///Set visuals for the hud
 /obj/effect/temp_visual/order/proc/set_visuals(faction)
-	var/hud_type
-	if(faction == FACTION_TERRAGOV)
-		hud_type = SQUAD_HUD_TERRAGOV
-	else if(faction == FACTION_TERRAGOV_REBEL)
-		hud_type = SQUAD_HUD_REBEL
-	else if(faction == FACTION_SOM)
-		hud_type = SQUAD_HUD_SOM
-	else
+	var/hud_type = GLOB.faction_to_squad_hud[faction]
+	if(!hud_type)
 		return
 	var/image/holder = hud_list[hud_type]
 	if(!holder)
