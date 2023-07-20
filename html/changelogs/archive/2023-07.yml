@@ -250,3 +250,10 @@
       a locker or ventcrawl
   novaepee:
   - rscadd: kilt; use facepaint on kama to choose kilt in the variety tab
+2023-07-20:
+  '? code ???':
+  - bugfix: Fixed status effects sometimes getting stuck on living or dead mobs
+  Lumipharon:
+  - bugfix: fixed some issues with xeno leaps
+  - bugfix: Throwing mobs through barbed plasteel cades when down will no longer hit
+      them 50 times
