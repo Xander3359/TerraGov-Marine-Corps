@@ -159,3 +159,6 @@
   - bugfix: Fixed crit OD peri+ runtime
   - bugfix: Fixed cas gau exploding contents of turfs twice
   - bugfix: Fixed multiple bodybag/tarp runtimes
+2023-08-11:
+  forestbbbbbbb:
+  - bugfix: Fix jetpack not working over wired cades
