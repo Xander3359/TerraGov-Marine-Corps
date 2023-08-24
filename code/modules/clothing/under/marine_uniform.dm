@@ -22,6 +22,11 @@
 /obj/item/clothing/under/marine/black_vest
 	starting_attachments = list(/obj/item/armor_module/storage/uniform/black_vest)
 
+/obj/item/clothing/under/marine/traumateam
+	name = "\improper Trama team jumpsuit"
+	desc = "bla bla bla corpsman team shirt"
+	icon_state = "trauma_jumpsuit"
+
 //Squad colored turtlenecks
 /obj/item/clothing/under/marine/squad/neck
 	name = "\improper TGMC Delta turtleneck"

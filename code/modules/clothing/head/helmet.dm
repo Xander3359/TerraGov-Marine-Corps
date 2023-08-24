@@ -202,6 +202,11 @@
 			M = mutable_appearance('icons/mob/modular/modular_helmet_storage.dmi',M.icon_state)
 			standing.overlays += M
 
+/obj/item/clothing/head/helmet/marine/traumateam
+	name = "\improper Trauma team helmet"
+	desc = "bla bla bla corpsman team shirt"
+	icon_state = "trauma_helmet"
+
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."

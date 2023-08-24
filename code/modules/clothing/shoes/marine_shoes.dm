@@ -39,6 +39,12 @@
 /obj/item/clothing/shoes/marine/full
 	starting_attachments = list(/obj/item/armor_module/storage/boot/full)
 
+/obj/item/clothing/shoes/marine/traumateam
+	name = "\improper Trauma team shoes"
+	desc = "bla bla bla corpsman team shirt"
+	icon = 'icons/obj/clothing/sets/trauma_team.dmi'
+	icon_state = "trauma_shoes"
+
 /obj/item/clothing/shoes/marine/brown
 	name = "brown marine combat boots"
 	icon_state = "marine_brown"
