@@ -123,3 +123,7 @@
   - qol: Adds a pref to disable radial menu for laser weapons
   yyzsong:
   - rscadd: Adds the FAMAS and M412L1 HPR to valhalla. Go play with 'em.
+2023-09-20:
+  Wisemonster:
+  - rscadd: Renamed face paints to customization kits and updated their description
+      to reflect their armor/clothing changing properties.
