@@ -29,7 +29,7 @@
 		atom/replacement,
 		fill_type,
 		ingredient_type = CUSTOM_INGREDIENT_TYPE_EDIBLE,
-		max_ingredients = MAX_ATOM_OVERLAYS - 3, // The cap is >= MAX_ATOM_OVERLAYS so we reserve 2 for top /bottom of item + 1 to stay under cap
+		max_ingredients = 97,
 		list/obj/item/initial_ingredients = null,
 		screentip_verb = "Add",
 )
@@ -63,7 +63,6 @@
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(customizable_attack))
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(parent, COMSIG_ATOM_PROCESSED, PROC_REF(on_processed))
-	RegisterSignal(parent, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, PROC_REF(on_requesting_context_from_item))
 	ADD_TRAIT(parent, TRAIT_CUSTOMIZABLE_REAGENT_HOLDER, REF(src))
 
 
@@ -73,7 +72,6 @@
 		COMSIG_PARENT_ATTACKBY,
 		COMSIG_PARENT_EXAMINE,
 		COMSIG_ATOM_PROCESSED,
-		COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM,
 	))
 	REMOVE_TRAIT(parent, TRAIT_CUSTOMIZABLE_REAGENT_HOLDER, REF(src))
 
@@ -210,7 +208,6 @@
 		if(ingredient.w_class > item_parent.w_class)
 			item_parent.w_class = ingredient.w_class
 	atom_parent.name = "[custom_adjective()] [custom_type()] [initial(atom_parent.name)]"
-	SEND_SIGNAL(atom_parent, COMSIG_ATOM_CUSTOMIZED, ingredient)
 	SEND_SIGNAL(ingredient, COMSIG_ITEM_USED_AS_INGREDIENT, atom_parent)
 
 
@@ -268,22 +265,3 @@
 	for (var/r in results)
 		var/atom/result = r
 		result.AddComponent(/datum/component/customizable_reagent_holder, null, fill_type, ingredient_type = ingredient_type, max_ingredients = max_ingredients, initial_ingredients = ingredients)
-
-/**
- * Adds context sensitivy directly to the customizable reagent holder file for screentips
- * Arguments:
- * * source - refers to item that will display its screentip
- * * context - refers to, in this case, an item that can be customized with other reagents or ingrideints
- * * held_item - refers to the item in your hand, which is hopefully an ingredient
- * * user - refers to user who will see the screentip when the proper context and tool are there
- */
-/datum/component/customizable_reagent_holder/proc/on_requesting_context_from_item(datum/source, list/context, obj/item/held_item, mob/user)
-	SIGNAL_HANDLER
-
-	// only accept valid ingredients
-	if (isnull(held_item) || !valid_ingredient(held_item))
-		return NONE
-
-	context[SCREENTIP_CONTEXT_LMB] = "[screentip_verb] [held_item]"
-
-	return CONTEXTUAL_SCREENTIP_SET

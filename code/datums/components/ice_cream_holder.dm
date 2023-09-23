@@ -56,69 +56,12 @@
 
 	RegisterSignal(owner, COMSIG_ITEM_ATTACK_OBJ, PROC_REF(on_item_attack_obj))
 	RegisterSignal(owner, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_update_overlays))
-	if(change_name)
-		RegisterSignal(owner, COMSIG_ATOM_UPDATE_NAME, PROC_REF(on_update_name))
-	if(!change_desc)
-		RegisterSignal(owner, COMSIG_PARENT_EXAMINE_MORE, PROC_REF(on_examine_more))
-	else
-		RegisterSignal(owner, COMSIG_ATOM_UPDATE_DESC, PROC_REF(on_update_desc))
-
-	RegisterSignal(owner, COMSIG_ITEM_IS_CORRECT_CUSTOM_ORDER, PROC_REF(check_food_order))
-
-	RegisterSignal(owner, COMSIG_ITEM_SOLD_TO_CUSTOMER, PROC_REF(sell_ice_cream))
 
 	if(prefill_flavours)
 		for(var/entry in prefill_flavours)
 			var/list/flavour_args = list(src) + prefill_flavours[entry]
 			var/datum/ice_cream_flavour/flavour = GLOB.ice_cream_flavours[entry]
 			flavour?.add_flavour(arglist(flavour_args))
-
-/datum/component/ice_cream_holder/proc/on_update_name(atom/source, updates)
-	SIGNAL_HANDLER
-	var/obj/obj = source
-	if(istype(obj) && obj.renamedByPlayer) //Renamed by the player.
-		return
-	var/scoops_len = length(scoops)
-	if(!scoops_len)
-		source.name = initial(source.name)
-	else
-		var/name_to_use = filled_name || initial(source.name)
-		var/list/unique_list = unique_list(scoops)
-		if(scoops_len > 1 && length(unique_list) == 1) // multiple flavours, and all of the same type
-			source.name = "[make_tuple(scoops_len)] [scoops[1]] [name_to_use]" // "double vanilla" sounds cooler than just "vanilla"
-		else
-			source.name = "[english_list(unique_list)] [name_to_use]"
-
-/datum/component/ice_cream_holder/proc/on_update_desc(atom/source, updates)
-	SIGNAL_HANDLER
-	var/obj/obj = source
-	if(istype(obj) && obj.renamedByPlayer) //Renamed by the player.
-		return
-	var/scoops_len = length(scoops)
-	if(!scoops_len)
-		source.desc = initial(source.desc)
-	else if(scoops_len == 1 || length(unique_list(scoops)) == 1) /// Only one flavour.
-		var/key = scoops[1]
-		var/datum/ice_cream_flavour/flavour = GLOB.ice_cream_flavours[LAZYACCESS(special_scoops, key) || key]
-		if(!flavour?.desc) //I scream.
-			source.desc = initial(source.desc)
-		else
-			source.desc = replacetext(replacetext("[flavour.desc_prefix] [flavour.desc]", "$CONE_NAME", initial(source.name)), "$CUSTOM_NAME", key)
-	else /// Many flavours.
-		source.desc = "A delicious [initial(source.name)] filled with scoops of [english_list(scoops)] icecream. That's as many as [scoops_len] scoops!"
-
-/datum/component/ice_cream_holder/proc/on_examine_more(atom/source, mob/mob, list/examine_list)
-	SIGNAL_HANDLER
-	var/scoops_len = length(scoops)
-	if(scoops_len == 1 || length(unique_list(scoops)) == 1) /// Only one flavour.
-		var/key = scoops[1]
-		var/datum/ice_cream_flavour/flavour = GLOB.ice_cream_flavours[LAZYACCESS(special_scoops, key) || key]
-		if(flavour?.desc) //I scream.
-			examine_list += "[source.p_theyre(TRUE)] filled with scoops of [flavour ? flavour.name : "broken, unhappy"] icecream."
-		else
-			examine_list += replacetext(replacetext("[source.p_theyre(TRUE)] [flavour.desc]", "$CONE_NAME", initial(source.name)), "$CUSTOM_NAME", key)
-	else /// Many flavours.
-		examine_list += "[source.p_theyre(TRUE)] filled with scoops of [english_list(scoops)] icecream. That's as many as [scoops_len] scoops!"
 
 /datum/component/ice_cream_holder/proc/on_update_overlays(atom/source, list/new_overlays)
 	SIGNAL_HANDLER
@@ -151,36 +94,7 @@
 			to_chat(user, span_warning("There is not enough ice cream left!"))
 	else
 		to_chat(user, span_warning("[source] can't hold anymore ice cream!"))
-	return COMPONENT_CANCEL_ATTACK_CHAIN
-
-/datum/component/ice_cream_holder/proc/check_food_order(obj/item/source, datum/custom_order/our_order)
-	SIGNAL_HANDLER
-	if(!istype(our_order, /datum/custom_order/icecream))
-		return FALSE
-	var/datum/custom_order/icecream/icecream_order = our_order
-	if(parent.type != icecream_order.cone_type) //check that the cone type matches
-		return FALSE
-
-	// We don't want to stop ice creams from being sold because of their order. we aren't that finnicky.
-	var/our_scoops = scoops.Copy()
-	sortTim(our_scoops, cmp = GLOBAL_PROC_REF(cmp_text_asc))
-
-	//Make sure the flavors and number of scoops match.
-	if(compare_list(our_scoops, icecream_order.wanted_flavors))
-		return COMPONENT_CORRECT_ORDER
-
-/datum/component/ice_cream_holder/proc/sell_ice_cream(obj/item/source, mob/living/simple_animal/robot_customer/sold_to, obj/item/container)
-	SIGNAL_HANDLER
-
-	//the price of ice cream scales with the number of scoops. Yummy.
-	var/venue_price = length(scoops) * FOOD_PRICE_TRASH * 2
-
-	var/datum/venue/venue_to_pay = sold_to.ai_controller?.blackboard[BB_CUSTOMER_ATTENDING_VENUE]
-
-	new /obj/item/holochip(get_turf(source), venue_price)
-	venue_to_pay.total_income += venue_price
-	playsound(get_turf(source), 'sound/effects/cashregister.ogg', 60, TRUE)
-
+	return
 
 /////ICE CREAM FLAVOUR DATUM STUFF
 
