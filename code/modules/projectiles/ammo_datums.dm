@@ -528,6 +528,16 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 	damage = 30
 	penetration = 10
 
+/datum/ammo/bullet/revolver/judge
+	name = "oversized revolver bullet"
+	hud_state = "revolver_slim"
+	shrapnel_chance = 0
+	damage_falloff = 0
+	accuracy = 15
+	accurate_range = 15
+	damage = 70
+	penetration = 10
+
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
 	hud_state = "revolver_heavy"
@@ -3956,6 +3966,16 @@ GLOBAL_LIST_INIT(no_sticky_resin, typecacheof(list(/obj/item/clothing/mask/faceh
 /// This spawns a leash ball and checks if the turf is dense before doing so
 /datum/ammo/xeno/leash_ball/proc/drop_leashball(turf/T)
 	new /obj/structure/xeno/aoe_leash(get_turf(T), hivenumber)
+
+/datum/ammo/xeno/spine //puppeteer
+	name = "spine"
+	damage = 35
+	icon_state = "spine"
+	damage_type = BRUTE
+	bullet_color = COLOR_WHITE
+	sound_hit = 'sound/bullets/spear_armor1.ogg'
+	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS
+
 /*
 //================================================
 					Misc Ammo
