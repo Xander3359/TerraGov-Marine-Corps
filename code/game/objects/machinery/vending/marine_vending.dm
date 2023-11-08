@@ -875,6 +875,16 @@
 			/obj/item/storage/pill_bottle/packet/paracetamol = -1,
 			/obj/item/storage/pill_bottle/packet/isotonic = -1,
 		),
+		"Pill Bottles" = list(
+			/obj/item/storage/pill_bottle/bicaridine = -1,
+			/obj/item/storage/pill_bottle/kelotane = -1,
+			/obj/item/storage/pill_bottle/tramadol = -1,
+			/obj/item/storage/pill_bottle/tricordrazine = -1,
+			/obj/item/storage/pill_bottle/dylovene = -1,
+			/obj/item/storage/pill_bottle/paracetamol = -1,
+			/obj/item/storage/pill_bottle/isotonic = -1,
+			/obj/item/storage/pill_bottle = -1, //These ones are empty, so you can customize
+		),
 		"Auto Injector" = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/bicaridine = -1,
 			/obj/item/reagent_containers/hypospray/autoinjector/kelotane = -1,
@@ -919,6 +929,16 @@
 			/obj/item/storage/pill_bottle/packet/dylovene = -1,
 			/obj/item/storage/pill_bottle/packet/paracetamol = -1,
 			/obj/item/storage/pill_bottle/packet/isotonic = -1,
+		),
+		"Pill Bottles" = list(
+			/obj/item/storage/pill_bottle/bicaridine = -1,
+			/obj/item/storage/pill_bottle/kelotane = -1,
+			/obj/item/storage/pill_bottle/tramadol = -1,
+			/obj/item/storage/pill_bottle/tricordrazine = -1,
+			/obj/item/storage/pill_bottle/dylovene = -1,
+			/obj/item/storage/pill_bottle/paracetamol = -1,
+			/obj/item/storage/pill_bottle/isotonic = -1,
+			/obj/item/storage/pill_bottle = -1, //These ones are empty, so you can customize
 		),
 		"Auto Injector" = list(
 			/obj/item/reagent_containers/hypospray/autoinjector/bicaridine = -1,
@@ -1195,8 +1215,7 @@
 			/obj/item/storage/holster/t19 = -1,
 			/obj/item/storage/holster/blade/machete/full = -1,
 			/obj/item/storage/holster/blade/machete/full_harvester = -1,
-			/obj/item/weapon/twohanded/glaive/harvester = -1,
-			/obj/item/storage/belt/utility/full =-1,
+			/obj/item/storage/belt/utility/full = -1,
 			/obj/item/storage/belt/medical_small = -1,
 			/obj/item/storage/belt/protein_pack = -1,
 		),
