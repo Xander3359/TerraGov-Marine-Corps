@@ -79,10 +79,19 @@
 		SSminimaps.add_marker(src, MINIMAP_FLAG_XENO, image('icons/UI_icons/map_blips.dmi', null, xeno_caste.minimap_icon))
 	RegisterSignal(src, COMSIG_LIVING_WEEDS_ADJACENT_REMOVED, PROC_REF(handle_weeds_adjacent_removed))
 	RegisterSignal(src, COMSIG_LIVING_WEEDS_AT_LOC_CREATED, PROC_REF(handle_weeds_on_movement))
+	RegisterSignal(src, COMSIG_ATOM_CANREACH, PROC_REF(on_reach))
 	handle_weeds_on_movement()
 
 	AddElement(/datum/element/footstep, footstep_type, mob_size >= MOB_SIZE_BIG ? 0.8 : 0.5)
 	set_jump_component()
+
+///Signal handler which checks if a xeno has multiple tiles of reach
+/mob/living/carbon/xenomorph/proc/on_reach(atom/source_src, atom/target, obj/item/tool, view_only)
+	SIGNAL_HANDLER
+
+	if(Adjacent(target) || target.Adjacent(src) || CheckToolReach(src, target, xeno_caste.slash_reach))
+		return COMSIG_ATOM_COULD_REACH
+	return NONE
 
 ///Change the caste of the xeno. If restore health is true, then health is set to the new max health
 /mob/living/carbon/xenomorph/proc/set_datum(restore_health_and_plasma = TRUE)

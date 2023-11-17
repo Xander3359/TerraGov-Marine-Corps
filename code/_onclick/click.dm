@@ -154,7 +154,7 @@
 			RangedAttack(A, params)
 
 
-/atom/movable/proc/CanReach(atom/ultimate_target, obj/item/tool, mob/living/carbon/xenomorph/attacker, view_only = FALSE)
+/atom/movable/proc/CanReach(atom/ultimate_target, obj/item/tool, view_only = FALSE)
 	// A backwards depth-limited breadth-first-search to see if the target is
 	// logically "in" anything adjacent to us.
 	var/list/direct_access = DirectAccess()
@@ -171,21 +171,19 @@
 				continue
 			closed[target] = TRUE
 			if(isturf(target) || isturf(target.loc) || (target in direct_access)) //Directly accessible atoms
-				if(isxeno(attacker))
-					if(Adjacent(target) || target.Adjacent(src) || (attacker && CheckToolReach(src, target, attacker.xeno_caste.slash_reach)))
-						return TRUE
+				if(SEND_SIGNAL(src, COMSIG_ATOM_CANREACH, target, tool, view_only) & COMSIG_ATOM_COULD_REACH)
+					return TRUE
 				if(Adjacent(target) || target.Adjacent(src) || (tool && CheckToolReach(src, target, tool.reach))) //Adjacent or reaching attacks
 					return TRUE
 
 			if(!target.loc)
 				continue
 
-			if(!(SEND_SIGNAL(target.loc, COMSIG_ATOM_CANREACH, next) & COMPONENT_BLOCK_REACH))
+			if(!(SEND_SIGNAL(target.loc, COMSIG_ATOM_CANREACH_TARGET, next) & COMPONENT_BLOCK_REACH))
 				next += target.loc
 
 		checking = next
 	return FALSE
-
 
 /atom/movable/proc/DirectAccess()
 	return list(src, loc)

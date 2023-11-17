@@ -218,7 +218,10 @@
 #define COMSIG_ATOM_EXITED "atom_exited"						//from base of atom/Exited(): (atom/movable/exiting, direction)
 #define COMSIG_ATOM_BUMPED "atom_bumped"						///from base of atom/Bumped(): (/atom/movable)
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"				//from base of atom/setDir(): (old_dir, new_dir)
-#define COMSIG_ATOM_CANREACH "atom_can_reach"					//from internal loop in atom/movable/proc/CanReach(): (list/next)
+///from internal loop in atom/movable/proc/CanReach(): (list/next)
+#define COMSIG_ATOM_CANREACH "atom_can_reach"
+	#define COMSIG_ATOM_COULD_REACH (1<<0)
+#define COMSIG_ATOM_CANREACH_TARGET "atom_can_reach_target"					//from internal loop in atom/movable/proc/CanReach(): (list/next)
 	#define COMPONENT_BLOCK_REACH (1<<0)
 #define COMSIG_ATOM_SCREWDRIVER_ACT "atom_screwdriver_act"		//from base of atom/screwdriver_act(): (mob/living/user, obj/item/I)
 #define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"				//from base of atom/attack_hand(mob/living/user)
