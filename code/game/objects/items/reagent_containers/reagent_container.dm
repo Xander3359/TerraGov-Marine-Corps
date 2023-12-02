@@ -13,6 +13,7 @@
 	throw_range = 5
 	var/init_reagent_flags
 	var/amount_per_transfer_from_this = 5
+	///Used to adjust how many units are transfered/injected in a single click
 	var/possible_transfer_amounts = list(5,10,15,25,30)
 	var/volume = 30
 	var/liquifier = FALSE //Can liquify/grind pills without needing fluid to dissolve.
@@ -28,7 +29,7 @@
 	/// The icon file to take fill icon appearances from
 	var/fill_icon = 'icons/obj/reagentfillings.dmi'
 
-/obj/item/reagent_containers/Initialize()
+/obj/item/reagent_containers/Initialize(mapload)
 	. = ..()
 	create_reagents(volume, init_reagent_flags, list_reagents)
 	if(!possible_transfer_amounts)
@@ -47,6 +48,10 @@
 	if(.)
 		return
 
+	open_ui(user)
+
+///Opens the relevant UI
+/obj/item/reagent_containers/proc/open_ui(mob/user)
 	if(!length(possible_transfer_amounts))
 		return
 
@@ -55,7 +60,6 @@
 		return
 
 	amount_per_transfer_from_this = N
-
 
 /obj/item/reagent_containers/verb/set_APTFT()
 	set name = "Set transfer amount"

@@ -84,7 +84,7 @@
 		parent.children.Add(src)
 	if(mob_owner)
 		owner = mob_owner
-		RegisterSignal(owner, COMSIG_PARENT_QDELETING, PROC_REF(clean_owner))
+		RegisterSignal(owner, COMSIG_QDELETING, PROC_REF(clean_owner))
 	soft_armor = getArmor()
 	hard_armor = getArmor()
 	return ..()
@@ -952,7 +952,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	target.balloon_alert_to_viewers("Splinting [display_name]...")
 
-	if(!do_mob(user, target, delay, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL, extra_checks = CALLBACK(src, PROC_REF(extra_splint_checks), applied_health)))
+	if(!do_after(user, delay, NONE, target, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL, extra_checks = CALLBACK(src, PROC_REF(extra_splint_checks), applied_health)))
 		return FALSE
 
 	target.balloon_alert_to_viewers("Splinted [display_name]")
@@ -1102,7 +1102,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	body_part = HAND_RIGHT
 	cover_index = 2
 
-/datum/limb/r_arm/process()
+/datum/limb/hand/r_hand/process()
 	..()
 	process_grasp(owner.r_hand, "right hand")
 
@@ -1115,7 +1115,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	body_part = HAND_LEFT
 	cover_index = 2
 
-/datum/limb/l_hand/process()
+/datum/limb/hand/l_hand/process()
 	..()
 	process_grasp(owner.l_hand, "left hand")
 
