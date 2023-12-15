@@ -146,3 +146,13 @@
   - rscadd: Sectoids have been reported displaying powerful new psionic abilities
       in this sector
   - balance: Sectoid base hp reduced to 80
+2023-12-14:
+  Lumipharon:
+  - balance: Drop pod drop time varies with orbit level
+  - balance: Drop pod landing location now scatters slightly, based on orbit level
+  - balance: Mass launch for drop pods has a slightly wider radius, based on orbit
+      level
+2023-12-15:
+  Helg2:
+  - rscadd: Time Shift now rewinds fire stacks.
+  - bugfix: Wraith's Time Shift now properly rewinds sander.
