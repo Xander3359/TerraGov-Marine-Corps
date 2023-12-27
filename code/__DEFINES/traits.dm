@@ -218,6 +218,20 @@
 #define TRAIT_NODROP "nodrop" // Cannot be dropped/unequipped at all, only deleted.
 #define TRAIT_T_RAY_VISIBLE "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_STRAPPABLE "strappable"
+/// Fish in this won't die
+#define TRAIT_FISH_SAFE_STORAGE "fish_case"
+/// Stuff that can go inside fish cases
+#define TRAIT_FISH_CASE_COMPATIBILE "fish_case_compatibile"
+/// If the item can be used as a bit.
+#define TRAIT_FISHING_BAIT "fishing_bait"
+/// The quality of the bait. It influences odds of catching fish
+#define TRAIT_BASIC_QUALITY_BAIT "baic_quality_bait"
+/// The quality of the bait. It influences odds of catching fish
+#define TRAIT_GOOD_QUALITY_BAIT "good_quality_bait"
+/// The quality of the bait. It influences odds of catching fish
+#define TRAIT_GREAT_QUALITY_BAIT "great_quality_bait"
+/// Baits with this trait will ignore bait preferences and related fish traits.
+#define TRAIT_OMNI_BAIT "omni_bait"
 // turf traits
 #define TRAIT_TURF_BULLET_MANIPULATION "bullet_manipulation" //This tile is doing something to projectile
 // projectile traits
@@ -240,3 +254,21 @@
 
 //added to AIs firing railguns
 #define TRAIT_IS_FIRING_RAILGUN "firing_railgun"
+
+///fish traits
+#define TRAIT_RESIST_EMULSIFY "resist_emulsify"
+#define TRAIT_FISH_SELF_REPRODUCE "fish_self_reproduce"
+#define TRAIT_FISH_NO_MATING "fish_no_mating"
+#define TRAIT_YUCKY_FISH "yucky_fish"
+#define TRAIT_FISH_TOXIN_IMMUNE "fish_toxin_immune"
+#define TRAIT_FISH_CROSSBREEDER "fish_crossbreeder"
+#define TRAIT_FISH_AMPHIBIOUS "fish_amphibious"
+///Trait needed for the lubefish evolution
+#define TRAIT_FISH_FED_LUBE "fish_fed_lube"
+#define TRAIT_FISH_NO_HUNGER "fish_no_hunger"
+///It comes from a fish case.
+#define TRAIT_FISH_FROM_CASE "fish_from_case"
+///coming from a fish trait datum.
+#define FISH_TRAIT_DATUM "fish_trait_datum"
+///coming from a fish evolution datum
+#define FISH_EVOLUTION "fish_evolution"

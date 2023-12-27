@@ -102,3 +102,11 @@ GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))
 	for(var/path in subtypesof(prototype))
 		L += new path()
 	return L
+
+/// Functions like init_subtypes, but uses the subtype's path as a key for easy access
+/proc/init_subtypes_w_path_keys(prototype, list/L)
+	if(!istype(L))
+		L = list()
+	for(var/path as anything in subtypesof(prototype))
+		L[path] = new path()
+	return L
