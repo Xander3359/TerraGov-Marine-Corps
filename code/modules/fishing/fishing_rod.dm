@@ -426,15 +426,6 @@
 	reel_overlay = "reel_bone"
 	default_line_color = "red"
 
-/datum/crafting_recipe/bone_rod
-	name = "Bone Fishing Rod"
-	result = /obj/item/fishing_rod/bone
-	time = 5 SECONDS
-	reqs = list(/obj/item/stack/sheet/leather = 1,
-				/obj/item/stack/sheet/sinew = 2,
-				/obj/item/stack/sheet/bone = 2)
-	category = CAT_TOOLS
-
 /obj/item/fishing_rod/telescopic
 	name = "telescopic fishing rod"
 	icon_state = "fishing_rod_telescopic"

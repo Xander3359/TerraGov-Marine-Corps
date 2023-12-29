@@ -44,13 +44,6 @@
 	icon_state = "reel_sinew"
 	line_color = "#d1cca3"
 
-/datum/crafting_recipe/sinew_line
-	name = "Sinew Fishing Line Reel"
-	result = /obj/item/fishing_line/sinew
-	reqs = list(/obj/item/stack/sheet/sinew = 2)
-	time = 2 SECONDS
-	category = CAT_TOOLS
-
 // Hooks
 
 /obj/item/fishing_hook
@@ -126,13 +119,6 @@
 	desc = "A simple hook carved from sharpened bone"
 	icon_state = "hook_bone"
 
-/datum/crafting_recipe/bone_hook
-	name = "Goliath Bone Hook"
-	result = /obj/item/fishing_hook/bone
-	reqs = list(/obj/item/stack/sheet/bone = 1)
-	time = 2 SECONDS
-	category = CAT_TOOLS
-
 /obj/item/fishing_hook/stabilized
 	name = "gyro-stabilized hook"
 	desc = "A quirky hook that grants the user a better control of the tool, allowing them to move the bait both and up and down when reeling in, otherwise keeping it in place."
@@ -156,7 +142,6 @@
 	desc = "Contains everything you need for your fishing trip."
 	icon_state = "fishing"
 	item_state = "artistic_toolbox"
-	material_flags = NONE
 
 /obj/item/storage/toolbox/fishing/Initialize(mapload)
 	. = ..()
@@ -165,7 +150,7 @@
 		/obj/item/fishing_rod,
 		/obj/item/fishing_line,
 	)
-	atom_storage.exception_hold = exception_cache
+	can_hold = exception_cache
 
 /obj/item/storage/toolbox/fishing/PopulateContents()
 	new /obj/item/bait_can/worm(src)
@@ -182,7 +167,7 @@
 
 /obj/item/storage/toolbox/fishing/small/Initialize(mapload)
 	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL //It can still hold a fishing rod
+	max_w_class = WEIGHT_CLASS_SMALL //It can still hold a fishing rod
 
 /obj/item/storage/toolbox/fishing/small/PopulateContents()
 	new /obj/item/fishing_rod(src)

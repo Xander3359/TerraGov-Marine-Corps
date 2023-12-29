@@ -3,7 +3,6 @@
 	name = "Fish Encyclopedia"
 	desc = "Indexes all fish known to mankind (and related species)."
 	icon_state = "fishbook"
-	starting_content = "Lot of fish stuff" //book wrappers could use cleaning so this is not necessary
 
 /obj/item/book/manual/fish_catalog/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -42,6 +41,56 @@
 
 	.["fish_info"] = fish_info
 	.["sponsored_by"] = AQUARIUM_COMPANY
+
+/// A list of food type names, in order of their flags
+#define FOOD_FLAGS list( \
+	"MEAT", \
+	"VEGETABLES", \
+	"RAW", \
+	"JUNKFOOD", \
+	"GRAIN", \
+	"FRUIT", \
+	"DAIRY", \
+	"FRIED", \
+	"ALCOHOL", \
+	"SUGAR", \
+	"GROSS", \
+	"TOXIC", \
+	"PINEAPPLE", \
+	"BREAKFAST", \
+	"CLOTH", \
+	"NUTS", \
+	"SEAFOOD", \
+	"ORANGES", \
+	"BUGS", \
+	"GORE", \
+	"STONE", \
+)
+
+/// IC meaning (more or less) for food flags
+#define FOOD_FLAGS_IC list( \
+	"Meat", \
+	"Vegetables", \
+	"Raw food", \
+	"Junk food", \
+	"Grain", \
+	"Fruits", \
+	"Dairy products", \
+	"Fried food", \
+	"Alcohol", \
+	"Sugary food", \
+	"Gross food", \
+	"Toxic food", \
+	"Pineapples", \
+	"Breakfast food", \
+	"Clothing", \
+	"Nuts", \
+	"Seafood", \
+	"Oranges", \
+	"Bugs", \
+	"Gore", \
+	"Rocks", \
+)
 
 /obj/item/book/manual/fish_catalog/proc/bait_description(bait)
 	if(ispath(bait))

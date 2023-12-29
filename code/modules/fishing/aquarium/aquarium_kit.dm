@@ -19,10 +19,8 @@
 /obj/item/storage/fish_case
 	name = "stasis fish case"
 	desc = "A resizable case keeping the fish inside in stasis."
-	icon = 'icons/obj/storage/case.dmi'
+	icon = 'icons/obj/items/storage/case.dmi'
 	icon_state = "fishbox"
-
-	storage_type = /datum/storage/fish_case
 
 /obj/item/storage/fish_case/Initialize(mapload)
 	ADD_TRAIT(src, TRAIT_FISH_SAFE_STORAGE, TRAIT_GENERIC) // Before populate so fish instatiates in ready container already
@@ -86,17 +84,6 @@
 	. = ..()
 	for(var/obj/item/fish/fish as anything in contents)
 		fish.set_status(FISH_DEAD)
-
-/obj/item/aquarium_kit
-	name = "DIY Aquarium Construction Kit"
-	desc = "Everything you need to build your own aquarium. Raw materials sold separately."
-	icon = 'icons/obj/aquarium.dmi'
-	icon_state = "construction_kit"
-	w_class = WEIGHT_CLASS_TINY
-
-/obj/item/aquarium_kit/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/slapcrafting, /datum/crafting_recipe/aquarium)
 
 /obj/item/aquarium_prop
 	name = "generic aquarium prop"

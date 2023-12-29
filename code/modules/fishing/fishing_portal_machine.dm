@@ -25,14 +25,6 @@
 	. = ..()
 	. += span_notice("You can unlock further portal settings by completing fish scanning experiments.")
 
-/obj/machinery/fishing_portal_generator/emag_act(mob/user, obj/item/card/emag/emag_card)
-	if(obj_flags & EMAGGED)
-		return FALSE
-	obj_flags |= EMAGGED
-	balloon_alert(user, "syndicate setting loaded")
-	playsound(src, SFX_SPARKS, 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	return TRUE
-
 /obj/machinery/fishing_portal_generator/interact(mob/user, special_state)
 	. = ..()
 	if(active)
@@ -69,9 +61,6 @@
 /obj/machinery/fishing_portal_generator/proc/select_fish_source(mob/user)
 	var/datum/fish_source/portal/default = GLOB.preset_fish_sources[/datum/fish_source/portal]
 	var/list/available_fish_sources = list(default.radial_name = default)
-	if(obj_flags & EMAGGED)
-		var/datum/fish_source/portal/syndicate = GLOB.preset_fish_sources[/datum/fish_source/portal/syndicate]
-		available_fish_sources[syndicate.radial_name] = syndicate
 	for (var/datum/techweb/techweb as anything in SSresearch.techwebs)
 		var/get_fish_sources = FALSE
 		for(var/obj/machinery/rnd/server/server as anything in techweb.techweb_servers)

@@ -235,7 +235,6 @@
 	RegisterSignal(fishing_line, COMSIG_QDELETING, PROC_REF(on_line_deleted))
 	RegisterSignal(used_rod, COMSIG_ITEM_ATTACK_SELF, PROC_REF(on_attack_self))
 	ADD_TRAIT(user, TRAIT_GONE_FISHING, REF(src))
-	user.add_mood_event("fishing", /datum/mood_event/fishing)
 	RegisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
 	start_baiting_phase()
 	to_chat(user, span_notice("You start fishing..."))

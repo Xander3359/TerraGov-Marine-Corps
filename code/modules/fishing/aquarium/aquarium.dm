@@ -151,9 +151,9 @@
 	panel_open = !panel_open
 	balloon_alert(user, "panel [panel_open ? "open" : "closed"]")
 	if(panel_open)
-		reagents.flags |= TRANSPARENT|REFILLABLE
+		reagents.reagent_flags |= TRANSPARENT|REFILLABLE
 	else
-		reagents.flags &= ~(TRANSPARENT|REFILLABLE)
+		reagents.reagent_flags &= ~(TRANSPARENT|REFILLABLE)
 	update_appearance()
 
 /obj/structure/aquarium/wrench_act(mob/living/user, obj/item/tool)
@@ -248,14 +248,6 @@
 				alive_fish++
 			else
 				dead_fish++
-		//Check if there are live fish - good mood
-		//All fish dead - bad mood.
-		//No fish - nothing.
-		if(alive_fish > 0)
-			user.add_mood_event("aquarium", /datum/mood_event/aquarium_positive)
-		else if(dead_fish > 0)
-			user.add_mood_event("aquarium", /datum/mood_event/aquarium_negative)
-		// Could maybe scale power of this mood with number/types of fish
 
 /obj/structure/aquarium/ui_data(mob/user)
 	. = ..()

@@ -272,3 +272,9 @@
 #define FISH_TRAIT_DATUM "fish_trait_datum"
 ///coming from a fish evolution datum
 #define FISH_EVOLUTION "fish_evolution"
+
+//fishing traits
+/// Currently fishing
+#define TRAIT_GONE_FISHING "fishing"
+///Added to mob or mind, changes the icons of the fish shown in the minigame UI depending on the possible reward.
+#define TRAIT_REVEAL_FISH "reveal_fish"

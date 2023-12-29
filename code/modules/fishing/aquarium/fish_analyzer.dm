@@ -33,16 +33,6 @@
 	set_greyscale(colors = list(case_color))
 	. = ..()
 
-	var/static/list/fishe_signals = list(
-		COMSIG_FISH_ANALYZER_ANALYZE_STATUS = TYPE_PROC_REF(/datum/component/experiment_handler, try_run_handheld_experiment),
-	)
-	AddComponent(/datum/component/experiment_handler, \
-		config_mode = EXPERIMENT_CONFIG_ALTCLICK, \
-		allowed_experiments = list(/datum/experiment/scanning/fish), \
-		config_flags = EXPERIMENT_CONFIG_SILENT_FAIL|EXPERIMENT_CONFIG_IMMEDIATE_ACTION, \
-		experiment_signals = fishe_signals, \
-	)
-
 	register_item_context()
 	update_appearance()
 
