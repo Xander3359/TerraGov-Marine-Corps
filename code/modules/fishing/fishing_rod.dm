@@ -47,7 +47,7 @@
 	. = ..()
 	register_context()
 	register_item_context()
-	update_appearance()
+	update_icon()
 
 /obj/item/fishing_rod/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(src == held_item)
@@ -485,7 +485,7 @@
 	if(user)
 		balloon_alert(user, active ? "extended" : "collapsed")
 	playsound(src, 'sound/weapons/batonextend.ogg', 50, TRUE)
-	update_appearance(UPDATE_OVERLAYS)
+	update_icon()
 	if(fishing_line)
 		QDEL_NULL(fishing_line)
 	return COMPONENT_NO_DEFAULT_MESSAGE

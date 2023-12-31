@@ -372,7 +372,7 @@
 				loc.visible_message(message)
 			else
 				visible_message(message)
-	update_appearance()
+	update_icon()
 	SEND_SIGNAL(src, COMSIG_FISH_STATUS_CHANGED)
 
 /obj/item/fish/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)

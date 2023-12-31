@@ -161,6 +161,8 @@
 
 #define isitem(A) (istype(A, /obj/item))
 
+#define isfish(A) (istype(A, /obj/item/fish))
+
 #define isgrabitem(A) (istype(A, /obj/item/grab))
 
 #define isclothing(A) (istype(A, /obj/item/clothing))

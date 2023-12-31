@@ -34,7 +34,7 @@
 	. = ..()
 
 	register_item_context()
-	update_appearance()
+	update_icon()
 
 /obj/item/fish_analyzer/Destroy()
 	if(fish_menu)

@@ -13,7 +13,7 @@
 	var/datum/component/fishing_spot/active
 
 /obj/machinery/fishing_portal_generator/on_set_panel_open()
-	update_appearance()
+	update_icon()
 	return ..()
 
 /obj/machinery/fishing_portal_generator/wrench_act(mob/living/user, obj/item/tool)

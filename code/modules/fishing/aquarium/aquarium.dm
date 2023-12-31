@@ -48,11 +48,11 @@
 
 /obj/structure/aquarium/Initialize(mapload)
 	. = ..()
-	update_appearance()
-	RegisterSignal(src, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, PROC_REF(track_if_fish))
-	AddElement(/datum/element/relay_attackers)
+	update_icon()
+	RegisterSignal(src, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE, PROC_REF(track_if_fish))
+	AddElement(/datum/element/relay_attackers) xantodo, test if this is needed
 	RegisterSignal(src, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_attacked))
-	create_reagents(6, SEALED_CONTAINER)
+	create_reagents(6)
 	RegisterSignal(reagents, COMSIG_REAGENTS_NEW_REAGENT, PROC_REF(start_autofeed))
 	AddComponent(/datum/component/plumbing/aquarium)
 
@@ -154,7 +154,7 @@
 		reagents.reagent_flags |= TRANSPARENT|REFILLABLE
 	else
 		reagents.reagent_flags &= ~(TRANSPARENT|REFILLABLE)
-	update_appearance()
+	uupdate_icon()
 
 /obj/structure/aquarium/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -182,12 +182,12 @@
 				glass.use(2)
 				broken = FALSE
 				atom_integrity = max_integrity
-				update_appearance()
+				update_icon()
 			return TRUE
 	else
 		var/datum/component/aquarium_content/content_component = item.GetComponent(/datum/component/aquarium_content)
 		if(content_component && content_component.is_ready_to_insert(src) && user.transferItemToLoc(item, src))
-			update_appearance()
+			update_icon()
 			return TRUE
 
 	if(istype(item, /obj/item/fish_feed) && !panel_open)
@@ -234,7 +234,7 @@
 				return
 			user.visible_message(span_danger("[user] stuffs [living_pulled] into [src]!"))
 			living_pulled.forceMove(src)
-			update_appearance()
+			update_icon()
 
 ///Apply mood bonus depending on aquarium status
 /obj/structure/aquarium/proc/admire(mob/living/user)
@@ -325,7 +325,7 @@
 		var/datum/reagents/reagent_splash = new()
 		reagent_splash.add_reagent(/datum/reagent/water, 30)
 		chem_splash(droploc, null, 3, list(reagent_splash))
-	update_appearance()
+	update_icon()
 
 #undef AQUARIUM_LAYER_STEP
 #undef AQUARIUM_MIN_OFFSET

@@ -527,7 +527,7 @@
 
 /obj/item/fish/starfish/Initialize(mapload)
 	. = ..()
-	update_appearance(UPDATE_OVERLAYS)
+	update_icon()
 
 /obj/item/fish/starfish/update_overlays()
 	. = ..()
