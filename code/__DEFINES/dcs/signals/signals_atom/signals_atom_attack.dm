@@ -23,3 +23,13 @@
 #define COMSIG_ATOM_AFTER_ATTACKEDBY "atom_after_attackby"
 ///from relay_attackers element: (atom/attacker, attack_flags)
 #define COMSIG_ATOM_WAS_ATTACKED "atom_was_attacked"
+
+	//For Relay Attackers
+	///Attacker was on help intent
+	#define ATTACKER_ATTACK_HELP (1<<0)
+	///Attacker was on grab intent
+	#define ATTACKER_ATTACK_GRAB (1<<1)
+	///Attacker was on disarm intent
+	#define ATTACKER_ATTACK_DISARM (1<<2)
+	///Attacker was on harm intent
+	#define ATTACKER_ATTACK_HARM (1<<3)
