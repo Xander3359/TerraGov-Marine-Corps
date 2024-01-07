@@ -91,10 +91,7 @@
 ///Adds or removes underlay sprites, checks holstered_item to see which underlay to add
 /obj/item/storage/holster/proc/update_underlays()
 	if(holstered_item && !holstered_item_underlay)
-		if(holstered_item.greyscale_config && holstered_item.greyscale_colors)
-			holstered_item_underlay = image(SSgreyscale.GetColoredIconByType(holstered_item.greyscale_config, holstered_item.greyscale_colors), "belt")
-		else
-			holstered_item_underlay = image(icon, src, holstered_item.icon_state)
+		holstered_item_underlay = image(icon, src, holstered_item.icon_state)
 		underlays += holstered_item_underlay
 	else
 		underlays -= holstered_item_underlay
@@ -157,9 +154,9 @@
 		/obj/item/weapon/gun/launcher/rocket/recoillessrifle,
 		/obj/item/weapon/gun/launcher/rocket/recoillessrifle/low_impact,
 	)
-	bypass_w_limit = list(/obj/item/weapon/gun/launcher/rocket/recoillessrifle,)
+	bypass_w_limit = list(/obj/item/weapon/gun/launcher/rocket/recoillessrifle)
 	///only one RR per bag
-	storage_type_limits = list(/obj/item/weapon/gun/launcher/rocket/recoillessrifle = 1,)
+	storage_type_limits = list(/obj/item/weapon/gun/launcher/rocket/recoillessrifle = 1)
 	can_hold = list(
 		/obj/item/ammo_magazine/rocket,
 		/obj/item/weapon/gun/launcher/rocket/recoillessrifle,
@@ -250,9 +247,9 @@
 	storage_slots = null
 	max_storage_space = 30
 	access_delay = 0
-	holsterable_allowed = list(/obj/item/mortar_kit,)
-	bypass_w_limit = list(/obj/item/mortar_kit,)
-	storage_type_limits = list(/obj/item/mortar_kit = 1,)
+	holsterable_allowed = list(/obj/item/mortar_kit)
+	bypass_w_limit = list(/obj/item/mortar_kit)
+	storage_type_limits = list(/obj/item/mortar_kit = 1)
 	can_hold = list(
 		/obj/item/mortal_shell/he,
 		/obj/item/mortal_shell/incendiary,
@@ -285,9 +282,9 @@
 	max_storage_space = 16
 	max_w_class = WEIGHT_CLASS_NORMAL
 	access_delay = 0
-	holsterable_allowed = list(/obj/item/weapon/gun/flamer/big_flamer/marinestandard/engineer,)
-	bypass_w_limit = list(/obj/item/weapon/gun/flamer/big_flamer/marinestandard/engineer,)
-	storage_type_limits = list(/obj/item/weapon/gun/flamer/big_flamer/marinestandard/engineer = 1,)
+	holsterable_allowed = list(/obj/item/weapon/gun/flamer/big_flamer/marinestandard/engineer)
+	bypass_w_limit = list(/obj/item/weapon/gun/flamer/big_flamer/marinestandard/engineer)
+	storage_type_limits = list(/obj/item/weapon/gun/flamer/big_flamer/marinestandard/engineer = 1)
 	///The internal fuel tank
 	var/obj/item/ammo_magazine/flamer_tank/internal/tank
 

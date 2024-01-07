@@ -378,17 +378,6 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define TASTE_DULL 30 //anything below 30%
 #define TASTE_NUMB 101 //no taste
 
-
-//defins for datum/hud
-
-#define HUD_STYLE_STANDARD 1
-#define HUD_STYLE_REDUCED 2
-#define HUD_STYLE_NOHUD 3
-#define HUD_VERSIONS 3
-#define HUD_SL_LOCATOR_COOLDOWN 0.5 SECONDS
-#define HUD_SL_LOCATOR_PROCESS_COOLDOWN 10 SECONDS
-
-
 //Blood levels
 #define BLOOD_VOLUME_MAXIMUM 600
 #define BLOOD_VOLUME_NORMAL 560
@@ -515,6 +504,7 @@ GLOBAL_LIST_INIT(xenoupgradetiers, list(XENO_UPGRADE_BASETYPE, XENO_UPGRADE_INVA
 #define CASTE_NOT_IN_BIOSCAN (1<<13) // xenos with this flag aren't registered towards bioscan
 #define CASTE_DO_NOT_ANNOUNCE_DEATH (1<<14) // xenos with this flag wont be announced to hive when dying
 #define CASTE_STAGGER_RESISTANT (1<<15) //Resistant to some forms of stagger, such as projectiles
+#define CASTE_HAS_WOUND_MASK (1<<16) //uses an alpha mask for wounded states
 
 // Xeno defines that affect evolution, considering making a new var for these
 #define CASTE_LEADER_TYPE (1<<16) //Whether we are a leader type caste, such as the queen, shrike or ?king?, and is affected by queen ban and playtime restrictions
