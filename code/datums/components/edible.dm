@@ -67,7 +67,7 @@ Behavior that's still missing from this component that original food items had t
 	setup_initial_reagents(initial_reagents)
 
 /datum/component/edible/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(examine))
 	RegisterSignal(parent, COMSIG_ATOM_CHECKPARTS, PROC_REF(OnCraft))
 	RegisterSignal(parent, COMSIG_ATOM_CREATEDBY_PROCESSING, PROC_REF(OnProcessed))
 	RegisterSignal(parent, COMSIG_FOOD_INGREDIENT_ADDED, PROC_REF(edible_ingredient_added))
@@ -98,7 +98,7 @@ Behavior that's still missing from this component that original food items had t
 		COMSIG_FOOD_INGREDIENT_ADDED,
 		COMSIG_ITEM_ATTACK,
 		COMSIG_ITEM_USED_AS_INGREDIENT,
-		COMSIG_PARENT_EXAMINE,
+		COMSIG_ATOM_EXAMINE,
 	))
 
 	qdel(GetComponent(/datum/component/connect_loc_behalf))

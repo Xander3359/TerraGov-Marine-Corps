@@ -1,3 +1,12 @@
+///If the machine is used/deleted in the crafting process
+#define CRAFTING_MACHINERY_CONSUME 1
+///If the structure is used/deleted in the crafting process
+#define CRAFTING_STRUCTURE_CONSUME 1
+///If the machine is only "used" i.e. it checks to see if it's nearby and allows crafting, but doesn't delete it
+#define CRAFTING_MACHINERY_USE 0
+///If the structure is only "used" i.e. it checks to see if it's nearby and allows crafting, but doesn't delete it
+#define CRAFTING_STRUCTURE_USE 0
+
 //food/drink crafting defines
 //When adding new defines, please make sure to also add them to the encompassing list
 #define CAT_FOOD "Foods"
@@ -8,6 +17,7 @@
 #define CAT_LIZARD "Lizard Food"
 #define CAT_MEAT "Meats"
 #define CAT_SEAFOOD "Seafood"
+#define CAT_MARTIAN "Martian Food"
 #define CAT_MISCFOOD "Misc. Food"
 #define CAT_MEXICAN "Mexican Food"
 #define CAT_MOTH "Mothic Food"
@@ -20,29 +30,6 @@
 #define CAT_SPAGHETTI "Spaghettis"
 #define CAT_ICE "Frozen"
 #define CAT_DRINK "Drinks"
-
-GLOBAL_LIST_INIT(crafting_category_food, list(
-	CAT_FOOD,
-	CAT_BREAD,
-	CAT_BURGER,
-	CAT_CAKE,
-	CAT_EGG,
-	CAT_LIZARD,
-	CAT_MEAT,
-	CAT_SEAFOOD,
-	CAT_MISCFOOD,
-	CAT_MEXICAN,
-	CAT_MOTH,
-	CAT_PASTRY,
-	CAT_PIE,
-	CAT_PIZZA,
-	CAT_SALAD,
-	CAT_SANDWICH,
-	CAT_SOUP,
-	CAT_SPAGHETTI,
-	CAT_ICE,
-	CAT_DRINK,
-))
 
 //crafting defines
 //When adding new defines, please make sure to also add them to the encompassing list
@@ -63,23 +50,4 @@ GLOBAL_LIST_INIT(crafting_category_food, list(
 #define CAT_CONTAINERS "Containers"
 #define CAT_ENTERTAINMENT "Entertainment"
 #define CAT_TOOLS "Tools"
-
-GLOBAL_LIST_INIT(crafting_category, list(
-	CAT_WEAPON_RANGED,
-	CAT_WEAPON_MELEE,
-	CAT_WEAPON_AMMO,
-	CAT_ROBOT,
-	CAT_MISC,
-	CAT_CLOTHING,
-	CAT_CHEMISTRY,
-	CAT_ATMOSPHERIC,
-	CAT_STRUCTURE,
-	CAT_TILES,
-	CAT_WINDOWS,
-	CAT_DOORS,
-	CAT_FURNITURE,
-	CAT_EQUIPMENT,
-	CAT_CONTAINERS,
-	CAT_ENTERTAINMENT,
-	CAT_TOOLS,
-))
+#define CAT_CULT "Blood Cult"

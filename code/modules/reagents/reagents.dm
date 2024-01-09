@@ -64,6 +64,13 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	///If true allow foam and smoke to transfer reagent into dead mobs
 	var/reactindeadmob = TRUE
 
+	///The default reagent container for the reagent, used for icon generation
+	var/obj/item/reagent_containers/default_container = /obj/item/reagent_containers/cup/bottle
+	/// Icon for fallback item displayed in a tourist's thought bubble for if this reagent had no associated glass_style datum.
+	var/fallback_icon
+	/// Icon state for fallback item displayed in a tourist's thought bubble for if this reagent had no associated glass_style datum.
+	var/fallback_icon_state
+
 /datum/reagent/New()
 	. = ..()
 	if(LAZYLEN(purge_list))

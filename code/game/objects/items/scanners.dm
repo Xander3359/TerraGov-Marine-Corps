@@ -351,6 +351,7 @@ REAGENT SCANNER
 	throwforce = 5
 	throw_speed = 4
 	throw_range = 20
+	tool_behaviour = TOOL_ANALYZER
 
 
 /obj/item/tool/analyzer/attack_self(mob/user as mob)

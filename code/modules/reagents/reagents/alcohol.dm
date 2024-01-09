@@ -1,74 +1,9 @@
-#define ALCOHOL_THRESHOLD_MODIFIER 0.05 //Greater numbers mean that less alcohol has greater intoxication potential
-#define ALCOHOL_RATE 0.004 //The rate at which alcohol affects you
-#define ALCOHOL_EXPONENT 1.6 //The exponent applied to boozepwr to make higher volume alcohol atleast a little bit damaging.
 
-/datum/reagent/consumable/ethanol
-	name = "Ethanol" //Parent class for all alcoholic reagents.
-	description = "A well-known alcohol with a variety of applications."
-	reagent_state = LIQUID
-	nutriment_factor = 0 //So alcohol can fill you up! If they want to.
-	color = "#404030" // rgb: 64, 64, 48
-	taste_description = "alcohol"
-	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning.
 
-	var/druggy = 0
-	var/halluci = 0
 
-/*
-Boozepwr Chart
-Note that all higher effects of alcohol poisoning will inherit effects for smaller amounts (i.e. light poisoning inherts from slight poisoning)
-In addition, severe effects won't always trigger unless the drink is poisonously strong
-All effects don't start immediately, but rather get worse over time; the rate is affected by the imbiber's alcohol tolerance
-0: Non-alcoholic
-1-10: Barely classifiable as alcohol - occassional slurring
-11-20: Slight alcohol content - slurring
-21-30: Below average - imbiber begins to look slightly drunk
-31-40: Just below average - no unique effects
-41-50: Average - mild disorientation, imbiber begins to look drunk
-51-60: Just above average - disorientation, vomiting, imbiber begins to look heavily drunk
-61-70: Above average - small chance of blurry vision, imbiber begins to look smashed
-71-80: High alcohol content - blurry vision, imbiber completely shitfaced
-81-90: Extremely high alcohol content - toxin damage, passing out
-91-100: Dangerously toxic - brain damage, probable liver failure.
-101 and beyond: Lethally toxic - Swift death.
-*/
 
-/datum/reagent/consumable/ethanol/on_mob_life(mob/living/L, metabolism)
-	if(iscarbon(L))
-		var/mob/living/carbon/C = L
-		if(C.drunkenness < volume * boozepwr * ALCOHOL_THRESHOLD_MODIFIER)
-			C.drunkenness = max((C.drunkenness + (sqrt(volume) * boozepwr * ALCOHOL_RATE)), 0) //Volume, power, and server alcohol rate effect how quickly one gets drunk.
-		if(ishuman(C))
-			var/mob/living/carbon/human/H = C
-			var/datum/internal_organ/liver/O = H.internal_organs_by_name["liver"]
-			if (istype(O))
-				O.take_damage(((max(sqrt(volume) * (boozepwr ** ALCOHOL_EXPONENT) * O.alcohol_tolerance, 0)) * 0.002), TRUE)
 
-	if(druggy != 0)
-		L.set_drugginess(druggy)
 
-	if(halluci)
-		L.hallucination += halluci
-
-	return ..()
-
-/datum/reagent/consumable/ethanol/reaction_obj(obj/O, volume)
-	if(istype(O,/obj/item/paper))
-		var/obj/item/paper/paperaffected = O
-		paperaffected.clearpaper()
-		to_chat(usr, span_warning("The [name] dissolves the ink on the paper."))
-	if(istype(O,/obj/item/book))
-		if(volume > 5)
-			var/obj/item/book/affectedbook = O
-			affectedbook.dat = null
-			to_chat(usr, span_warning("The [name] dissolves the ink on the book."))
-		else
-			to_chat(usr, span_warning("[O]'s ink is smeared by [name], but doesn't wash away!"))
-
-/datum/reagent/consumable/ethanol/reaction_mob(mob/living/L, method = TOUCH, volume, show_message = TRUE, touch_protection = 0)
-	. = ..()
-	if(method in list(TOUCH, VAPOR, PATCH))
-		L.adjust_fire_stacks(round(volume * 0.65))
 
 /datum/reagent/consumable/ethanol/beer
 	name = "Beer"
@@ -390,18 +325,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "sweet 'n creamy"
 	boozepwr = 45
 
-/datum/reagent/consumable/ethanol/bloody_mary
-	name = "Bloody Mary"
-	description = "A strange yet pleasurable mixture made of vodka, tomato and lime juice. Or at least you THINK the red stuff is tomato juice."
-	color = "#664300" // rgb: 102, 67, 0
-	taste_description = "tomatoes with a hint of lime"
-	boozepwr = 55
 
-
-/datum/reagent/consumable/ethanol/bloody_mary/on_mob_life(mob/living/L, metabolism)
-	if(L.blood_volume < BLOOD_VOLUME_NORMAL)
-		L.blood_volume += 0.3 //Bloody Mary slowly restores blood loss.
-	return ..()
 
 /datum/reagent/consumable/ethanol/brave_bull
 	name = "Brave Bull"

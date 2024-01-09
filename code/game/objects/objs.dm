@@ -40,6 +40,10 @@
 	///Odds of a projectile hitting the object, if the object is dense
 	var/coverage = 50
 
+	/// Icon to use as a 32x32 preview in crafting menus and such
+	var/icon_preview
+	var/icon_state_preview
+
 /obj/Initialize(mapload)
 	. = ..()
 	if(islist(soft_armor))
