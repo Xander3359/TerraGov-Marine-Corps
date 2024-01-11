@@ -143,11 +143,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /// Called after add_reagents creates a new reagent.
 /datum/reagent/proc/on_new(data)
-	return
+	if(data)
+		src.data = data
 
 /// Called when two reagents of the same are mixing.
-/datum/reagent/proc/on_merge(data)
+/datum/reagent/proc/on_merge(data, amount)
 	return
+
+/// Should return a associative list where keys are taste descriptions and values are strength ratios
+/datum/reagent/proc/get_taste_description(mob/living/taster)
+	return list("[taste_description]" = 1)
 
 /// Called by [/datum/reagents/proc/conditional_update]
 /datum/reagent/proc/on_update(atom/A)
@@ -214,10 +219,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	SHOULD_CALL_PARENT(TRUE)
 
 	. = SEND_SIGNAL(src, COMSIG_REAGENT_EXPOSE_MOB, exposed_mob, methods, reac_volume, show_message, touch_protection)
-	if((methods & penetrates_skin) && exposed_mob.reagents) //smoke, foam, spray
-		var/amount = round(reac_volume*clamp((1 - touch_protection), 0, 1), 0.1)
-		if(amount >= 0.5)
-			exposed_mob.reagents.add_reagent(type, amount, added_purity = purity)
 
 /// Applies this reagent to an [/obj]
 /datum/reagent/proc/expose_obj(obj/exposed_obj, reac_volume)

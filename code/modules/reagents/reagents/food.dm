@@ -1,89 +1,17 @@
-
+/* //XANDER TODO
 /////////////////////////Food Reagents////////////////////////////
 // Part of the food code. Nutriment is used instead of the old "heal_amt" code. Also is where all the food
 // 	condiments, additives, and such go.
 
-/datum/reagent/consumable
-	name = "Consumable"
-	custom_metabolism = FOOD_METABOLISM
-	taste_description = "generic food"
-	taste_multi = 4
-	var/nutriment_factor = 1
-	var/adj_temp = 0
-	var/targ_temp = BODYTEMP_NORMAL
-
-/datum/reagent/consumable/on_mob_life(mob/living/L, metabolism)
-	current_cycle++
-	if(iscarbon(L))
-		var/mob/living/carbon/C = L
-		C.adjust_nutrition(nutriment_factor*0.5*effect_str)
-	if(adj_temp)
-		L.adjust_bodytemperature(adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT, (adj_temp < 0 ? targ_temp : INFINITY), (adj_temp > 0 ? 0 : targ_temp))
-	holder.remove_reagent(type, custom_metabolism)
-	return TRUE
-
-/datum/reagent/consumable/nutriment
-	name = "Nutriment"
-	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
-	nutriment_factor = 15
-	color = "#664330" // rgb: 102, 67, 48
-	var/brute_heal = 1
-	var/burn_heal = 0
-	var/blood_gain = 0.4
-
-/datum/reagent/consumable/nutriment/on_mob_life(mob/living/L, metabolism)
-	if(prob(50))
-		L.heal_limb_damage(brute_heal, burn_heal)
-	if(iscarbon(L))
-		var/mob/living/carbon/C = L
-		if(C.blood_volume < BLOOD_VOLUME_NORMAL)
-			C.blood_volume += blood_gain
-
-	return ..()
-
-/datum/reagent/consumable/nutriment/on_new(list/supplied_data)
-	// taste data can sometimes be ("salt" = 3, "chips" = 1)
-	// and we want it to be in the form ("salt" = 0.75, "chips" = 0.25)
-	// which is called "normalizing"
-
-	if(!supplied_data)
-		supplied_data = data
-
-	// if data isn't an associative list, this has some WEIRD side effects
-	// TODO probably check for assoc list?
-
-	data = counterlist_normalise(supplied_data)
-
-/datum/reagent/consumable/nutriment/on_merge(list/newdata, newvolume)
-	if(!islist(newdata) || !length(newdata))
-		return
-
-	// data for nutriment is one or more (flavour -> ratio)
-	// where all the ratio values adds up to 1
-
-	var/list/taste_amounts = list()
-	if(data)
-		taste_amounts = data.Copy()
-
-	counterlist_scale(taste_amounts, volume)
-
-	var/list/other_taste_amounts = newdata.Copy()
-	counterlist_scale(other_taste_amounts, newvolume)
-
-	counterlist_combine(taste_amounts, other_taste_amounts)
-
-	counterlist_normalise(taste_amounts)
-
-	data = taste_amounts
 
 
-/datum/reagent/consumable/sugar
-	name = "Sugar"
-	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
-	color = "#FFFFFF" // rgb: 255, 255, 255
-	taste_multi = 1.5 // stop sugar drowning out other flavours
-	nutriment_factor = 10
-	taste_description = "sweetness"
+
+
+
+
+
+
+
 
 /datum/reagent/consumable/virus_food
 	name = "Virus Food"
@@ -447,14 +375,5 @@
 	color = "#FFFFFF" // rgb: 255,255,255
 	taste_description = "salt"
 
-/datum/reagent/consumable/nutriment/vitamin
-	name = "Vitamin"
-	description = "All the best vitamins, minerals, and carbohydrates the body needs in pure form."
 
-	brute_heal = 0.07
-	burn_heal = 0.07
-
-/datum/reagent/consumable/nutriment/protein
-	name = "Protein"
-	description = "A natural polyamide made up of amino acids. An essential constituent of mosts known forms of life."
-	brute_heal = 0.02 //Rewards the player for eating a balanced diet.
+*/

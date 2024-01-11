@@ -107,7 +107,7 @@
 /datum/reagent/consumable/ethanol/beer/green
 	name = "Green Beer"
 	description = "An alcoholic beverage brewed since ancient times on Old Earth. This variety is dyed a festive green."
-	color = COLOR_CRAYON_GREEN
+	color = "#A8E61D"
 	overdose_threshold = 55 //More than a glass
 	taste_description = "green piss water"
 
@@ -116,6 +116,89 @@
 	description = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936!"
 	color = "#8e8368" // rgb: 142,131,104
 	boozepwr = 45
+
+/datum/reagent/consumable/ethanol/kahlua/on_mob_life(mob/living/drinker, metabolism)
+	drinker.dizzy(-4)
+	drinker.adjustDrowsyness(-2)
+	drinker.AdjustSleeping(-6 SECONDS)
+	drinker.jitter(5)
+	return ..()
+
+/datum/reagent/consumable/ethanol/pwine
+	name = "Poison Wine"
+	description = "A potent wine with hallucinogenic properties, popular among high personalities and villains."
+	color = "#000000" // rgb: 0, 0, 0 SHOCKER
+	taste_description = "evil velvet"
+	boozepwr = 40
+
+/datum/reagent/consumable/ethanol/pwine/on_mob_life(mob/living/L, metabolism)
+	switch(current_cycle)
+		if(1 to 19)
+			L.jitter(2)
+			L.hallucination = max(L.hallucination, 3)
+			if(prob(1))
+				L.emote(pick("twitch","giggle"))
+		if(20 to 59)
+			L.set_timed_status_effect(4 SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
+			L.hallucination = max(L.hallucination, 10)
+			L.jitter(3)
+			L.dizzy(2)
+			L.set_drugginess(10)
+			if(prob(5))
+				L.emote(pick("twitch","giggle"))
+		if(60 to 119)
+			L.set_timed_status_effect(4 SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
+			L.hallucination = max(L.hallucination, 60)
+			L.jitter(4)
+			L.dizzy(4)
+			L.set_drugginess(30)
+			if(prob(10))
+				L.emote(pick("twitch","giggle"))
+			if(prob(30))
+				L.adjustToxLoss(0.5)
+		if(120 to 199)
+			L.set_timed_status_effect(4 SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
+			L.hallucination = max(L.hallucination, 60)
+			L.jitter(4)
+			L.dizzy(4)
+			L.druggy = max(L.druggy, 60)
+			if(prob(10))
+				L.emote(pick("twitch","giggle"))
+			if(prob(30))
+				L.adjustToxLoss(1)
+			if(prob(5))
+				if(ishuman(L))
+					var/mob/living/carbon/human/H = L
+					var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
+					if(istype(E))
+						E.take_damage(2)
+		if(200 to INFINITY)
+			L.set_timed_status_effect(5 SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
+			L.adjustToxLoss(1)
+			L.hallucination = max(L.hallucination, 60)
+			L.jitter(4)
+			L.dizzy(4)
+			L.druggy = max(L.druggy, 60)
+			if(ishuman(L) && prob(10))
+				var/mob/living/carbon/human/H = L
+				var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
+				if(istype(E))
+					if(H.species.species_flags ~! NO_PAIN)
+						to_chat(H, span_danger("You clutch for a moment as you feel a scorching pain covering your abdomen!"))
+						H.Stun(6 SECONDS)
+					E.take_damage(20)
+	return ..()
+
+/datum/reagent/consumable/ethanol/deadrum
+	name = "Deadrum"
+	description = "Popular with the sailors. Not very popular with everyone else."
+	color = "#664300" // rgb: 102, 67, 0
+	boozepwr = 35
+	taste_description = "salty sea water"
+
+/datum/reagent/consumable/ethanol/deadrum/on_mob_life(mob/living/L, metabolism)
+	L.dizzy(5)
+	return ..()
 
 /datum/reagent/consumable/ethanol/whiskey
 	name = "Whiskey"
@@ -140,10 +223,17 @@
 	name = "Thirteen Loko"
 	description = "A potent mixture of caffeine and alcohol."
 	color = "#102000" // rgb: 16, 32, 0
-	nutriment_factor = 1
+	nutriment_factor = 1 * FOOD_METABOLISM
 	boozepwr = 80
 	overdose_threshold = 60
 	taste_description = "jitters and death"
+	trait_flags = TACHYCARDIC
+
+/datum/reagent/consumable/ethanol/thirteenloko/on_mob_life(mob/living/L, metabolism)
+	L.adjustDrowsyness(-7)
+	L.AdjustSleeping(-80 SECONDS)
+	L.jitter(5)
+	return ..()
 
 /datum/reagent/consumable/ethanol/vodka
 	name = "Vodka"
@@ -235,10 +325,15 @@
 
 /datum/reagent/consumable/ethanol/absinthe
 	name = "Absinthe"
-	description = "A powerful alcoholic drink. Rumored to cause hallucinations but does not."
-	color = rgb(10, 206, 0)
-	boozepwr = 80 //Very strong even by default
+	description = "Watch out that the Green Fairy doesn't come for you!"
+	color = "#33EE00" // rgb: 51, 238, 0
 	taste_description = "death and licorice"
+	boozepwr = 80
+
+/datum/reagent/consumable/ethanol/absinthe/on_mob_life(mob/living/L, metabolism)
+	if(prob(10))
+		L.hallucination += 4 //Reference to the urban myth
+	return ..()
 
 /datum/reagent/consumable/ethanol/hooch
 	name = "Hooch"
@@ -338,9 +433,9 @@
 	taste_description = "tomatoes with a hint of lime"
 	boozepwr = 55
 
-/datum/reagent/consumable/ethanol/bloody_mary/on_mob_life(mob/living/L, metabolism)
-	if(L.blood_volume < BLOOD_VOLUME_NORMAL)
-		L.blood_volume += 0.3 //Bloody Mary slowly restores blood loss.
+/datum/reagent/consumable/ethanol/bloody_mary/on_mob_life(mob/living/drinker, metabolism)
+	if(drinker.blood_volume < BLOOD_VOLUME_NORMAL)
+		drinker.blood_volume += 0.3 //Bloody Mary slowly restores blood loss.
 	return ..()
 
 /datum/reagent/consumable/ethanol/brave_bull
@@ -372,6 +467,10 @@
 	custom_metabolism = 1.25 * REAGENTS_METABOLISM
 	taste_description = "JUSTICE"
 	overdose_threshold = 40
+
+/datum/reagent/consumable/ethanol/beepsky_smash/on_mob_life(mob/living/L, metabolism)
+	L.Stun(4 SECONDS)
+	return ..()
 
 /datum/reagent/consumable/ethanol/irish_cream
 	name = "Irish Cream"
@@ -639,10 +738,27 @@
 /datum/reagent/consumable/ethanol/silencer
 	name = "Silencer"
 	description = "A drink from Mime Heaven."
-	nutriment_factor = 2
-	color = "#a8a8a8" // rgb: 168,168,168
-	boozepwr = 59 //Proof that clowns are better than mimes right here
+	nutriment_factor = 1 * FOOD_METABOLISM
+	color = "#664300" // rgb: 102, 67, 0
+	boozepwr = 59
 	taste_description = "a pencil eraser"
+
+/datum/reagent/consumable/ethanol/silencer/on_mob_life(mob/living/L, metabolism)
+	switch(current_cycle)
+		if(1 to 50)
+			L.dizzy(5)
+			L.adjust_timed_status_effect(2 SECONDS, /datum/status_effect/speech/stutter)
+		if(51 to 100)
+			L.dizzy(5)
+			L.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/speech/stutter)
+			if(prob(20))
+				L.AdjustConfused(6 SECONDS)
+		if(101 to INFINITY)
+			L.dizzy(6)
+			L.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/speech/stutter)
+			if(prob(20))
+				L.AdjustConfused(10 SECONDS)
+	return ..()
 
 /datum/reagent/consumable/ethanol/drunkenblumpkin
 	name = "Drunken Blumpkin"
@@ -739,7 +855,7 @@
 /datum/reagent/consumable/ethanol/narsour
 	name = "Nar'Sour"
 	description = "Side effects include self-mutilation and hoarding plasteel."
-	color = RUNE_COLOR_DARKRED
+	color = "#7D1717"
 	boozepwr = 10
 	taste_description = "bloody"
 
@@ -1240,7 +1356,6 @@
 	description = "The dangerous, potent, alcoholic component of ritual wine."
 	color = rgb(35, 231, 25)
 	boozepwr = 90 //enjoy near death intoxication
-	taste_mult = 6
 	taste_description = "concentrated herbs"
 
 //Moth Drinks
