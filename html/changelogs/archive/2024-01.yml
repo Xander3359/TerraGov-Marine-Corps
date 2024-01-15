@@ -135,3 +135,6 @@
   - qol: Adds a "Smartguns/IFF" to the valhalla vendor
   ivanmixo:
   - bugfix: Fixed an exploit related to hudglasses
+2024-01-15:
+  Lumipharon:
+  - bugfix: fixed an issue with AMR lase continuously trying to turn off
