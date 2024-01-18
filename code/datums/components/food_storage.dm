@@ -18,7 +18,7 @@
 
 /datum/component/food_storage/Initialize(_minimum_weight_class = WEIGHT_CLASS_SMALL, _bad_chance = 0, _good_chance = 100)
 
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(try_inserting_item))
+	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(try_inserting_item))
 	RegisterSignal(parent, COMSIG_CLICK_CTRL, PROC_REF(try_removing_item))
 	RegisterSignal(parent, COMSIG_FOOD_EATEN, PROC_REF(consume_food_storage))
 
@@ -63,7 +63,7 @@
 		to_chat(user, span_warning("There's something in \the [parent]."))
 		return
 
-	if(inserted_item.flags_item == NODROP)
+	if(HAS_TRAIT(inserted_item, TRAIT_NODROP))
 		to_chat(user, span_warning("\the [inserted_item] is stuck to your hand, you can't put into \the [parent]!"))
 		return
 
@@ -95,7 +95,7 @@
 					span_notice("You start to rip into \the [parent]."))
 
 	INVOKE_ASYNC(src, PROC_REF(begin_remove_item), user)
-	return 
+	return
 
 /** Inserts the item into the food, after a do_after.
  *

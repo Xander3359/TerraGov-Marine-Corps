@@ -99,8 +99,8 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 		else if(is_type_in_typecache(weapon, deepfry_blacklisted_items) \
 			|| is_type_in_typecache(weapon, GLOB.oilfry_blacklisted_items) \
 			|| weapon.contents \
-			|| (weapon.flags_item == NODROP) \
-			|| (weapon.flags_item & (ABSTRACT|DROPDEL|HAND_ITEM)))
+			|| HAS_TRAIT(weapon, TRAIT_NODROP) \
+			|| (weapon.flags_item & (ITEM_ABSTRACT|DELONDROP|HAND_ITEM)))
 			return ..()
 		// Do the frying.
 		else if(!frying && user.transferItemToLoc(weapon, src))

@@ -1530,7 +1530,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			victim.apply_damage(max(25, force*1.5), BRUTE, BODY_ZONE_CHEST, wound_bonus = 7, sharpness = TRUE)
 			victim.losebreath += 6
 			discover_after = FALSE
-		if(QDELETED(src)) // in case trying to embed it caused its deletion (say, if it's DROPDEL)
+		if(QDELETED(src)) // in case trying to embed it caused its deletion (say, if it's DELONDROP)
 			return
 		source_item?.reagents?.add_reagent(/datum/reagent/blood, 2)
 

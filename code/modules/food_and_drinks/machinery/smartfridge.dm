@@ -365,7 +365,7 @@
 	base_build_path = /obj/machinery/smartfridge/drinks
 
 /obj/machinery/smartfridge/drinks/accept_check(obj/item/O)
-	if(!isreagentcontainer(O) || (O.flags_item & ABSTRACT) || !O.reagents || !O.reagents.reagent_list.len)
+	if(!isreagentcontainer(O) || (O.flags_item & ITEM_ABSTRACT) || !O.reagents || !O.reagents.reagent_list.len)
 		return FALSE
 	if(istype(O, /obj/item/reagent_containers/cup) || istype(O, /obj/item/reagent_containers/cup/glass) || istype(O, /obj/item/reagent_containers/condiment))
 		return TRUE
@@ -425,7 +425,7 @@
 					return FALSE
 			return TRUE
 		return FALSE
-	if(!isreagentcontainer(O) || (O.flags_item & ABSTRACT))
+	if(!isreagentcontainer(O) || (O.flags_item & ITEM_ABSTRACT))
 		return FALSE
 	if(istype(O, /obj/item/reagent_containers/pill)) // empty pill prank ok
 		return TRUE

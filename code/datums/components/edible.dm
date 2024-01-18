@@ -86,20 +86,21 @@ Behavior that's still missing from this component that original food items had t
 		if(!item.grind_results)
 			item.grind_results = list() //If this doesn't already exist, add it as an empty list. This is needed for the grinder to accept it.
 
-	else if(isturf(parent) || isstructure(parent))
+	//else if(isturf(parent) || isstructure(parent))
 		//RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(TryToEatIt))
 
 /datum/component/edible/UnregisterFromParent()
 	UnregisterSignal(parent, list(
-		COMSIG_ATOM_ATTACK_HAND,
 		COMSIG_ATOM_CHECKPARTS,
 		COMSIG_ATOM_CREATEDBY_PROCESSING,
 		COMSIG_ATOM_ENTERED,
 		COMSIG_FOOD_INGREDIENT_ADDED,
-		COMSIG_ITEM_ATTACK,
 		COMSIG_ITEM_USED_AS_INGREDIENT,
 		COMSIG_ATOM_EXAMINE,
 	))
+
+		//COMSIG_ATOM_ATTACK_HAND,
+		//COMSIG_ITEM_ATTACK,
 
 	qdel(GetComponent(/datum/component/connect_loc_behalf))
 
@@ -399,7 +400,7 @@ Behavior that's still missing from this component that original food items had t
 #undef EAT_TIME_FORCE_FEED
 #undef EAT_TIME_VORACIOUS_MULT
 #undef EAT_TIME_VORACIOUS_FULL_MULT
-*/
+
 
 ///This function lets the eater take a bite and transfers the reagents to the eater.
 /datum/component/edible/proc/TakeBite(mob/living/carbon/eater, mob/living/feeder)
@@ -438,6 +439,7 @@ Behavior that's still missing from this component that original food items had t
 	if(SEND_SIGNAL(eater, COMSIG_CARBON_ATTEMPT_EAT, parent) & COMSIG_CARBON_BLOCK_EAT)
 		return
 	return TRUE
+*/
 
 ///Delete the item when it is fully eaten
 /datum/component/edible/proc/On_Consume(mob/living/eater, mob/living/feeder)

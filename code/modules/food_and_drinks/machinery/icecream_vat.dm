@@ -80,7 +80,7 @@
 	popup.open()
 
 /obj/machinery/icecream_vat/attackby(obj/item/O, mob/user, params)
-	if(isreagentcontainer(O) && !(O.flags_item & ABSTRACT) && O.is_open_container())
+	if(isreagentcontainer(O) && !(O.flags_item & ITEM_ABSTRACT) && O.is_open_container())
 		. = TRUE //no afterattack
 		var/obj/item/reagent_containers/B = O
 		if(!user.transferItemToLoc(B, src))
