@@ -50,7 +50,7 @@
 #define REAGENTS_OVERDOSE 30
 #define REAGENTS_OVERDOSE_CRITICAL 50
 
-// How many units of reagent are consumed per tick, by default.
+///How many units of reagent are consumed per tick, by default.
 #define REAGENTS_METABOLISM 0.2
 
 // Reagent metabolism defines.

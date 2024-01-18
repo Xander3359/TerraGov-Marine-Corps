@@ -126,7 +126,7 @@
 /datum/reagent/consumable/laughter
 	name = "Laughter"
 	description = "Some say that this is the best medicine, but recent studies have proven that to be untrue."
-	custom_metabolism = INFINITY
+	metabolization_rate = INFINITY
 	color = "#FF4DD2"
 	taste_description = "laughter"
 
@@ -137,7 +137,7 @@
 /datum/reagent/consumable/superlaughter
 	name = "Super Laughter"
 	description = "Funny until you're the one laughing."
-	custom_metabolism = 1.5 * REAGENTS_METABOLISM
+	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 	color = "#FF4DD2"
 	taste_description = "laughter"
 
@@ -419,7 +419,7 @@
 	description = "A delightfully bubbly root beer, filled with so much sugar that it can actually speed up the user's trigger finger."
 	color = "#181008" // rgb: 24, 16, 8
 	nutriment_factor = 10
-	custom_metabolism = 2 * REAGENTS_METABOLISM
+	metabolization_rate = 2 * REAGENTS_METABOLISM
 	taste_description = "a monstrous sugar rush"
 	/// If we activated the effect
 	var/effect_enabled = FALSE
@@ -457,7 +457,7 @@
 	var/obj/item/organ/internal/liver/liver = affected_atom.get_organ_slot(ORGAN_SLOT_LIVER)
 	if(HAS_TRAIT(liver, TRAIT_MAINTENANCE_METABOLISM))
 		affected_atom.add_mood_event("maintenance_fun", /datum/mood_event/maintenance_high)
-		custom_metabolism *= 0.8
+		metabolization_rate *= 0.8
 
 /datum/reagent/consumable/grey_bull/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()

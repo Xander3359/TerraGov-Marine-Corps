@@ -2023,6 +2023,7 @@
 #include "code\modules\reagents\reagents\food_reagents.dm"
 #include "code\modules\reagents\reagents\medical.dm"
 #include "code\modules\reagents\reagents\other.dm"
+#include "code\modules\reagents\reagents\other_reagents.dm"
 #include "code\modules\reagents\reagents\toxin.dm"
 #include "code\modules\reagents\reagents\drinks\alcohol_reagents.dm"
 #include "code\modules\reagents\reagents\drinks\drink_reagents.dm"

@@ -411,10 +411,10 @@
 	req_one_access = list()
 	dispensable_reagents = list(
 		/datum/reagent/water,
-		/datum/reagent/consumable/drink/milk,
+		/datum/reagent/consumable/milk,
 		/datum/reagent/consumable/drink/cold/ice,
 		/datum/reagent/consumable/drink/coffee,
-		/datum/reagent/consumable/drink/milk/cream,
+		/datum/reagent/consumable/milk/cream,
 		/datum/reagent/consumable/drink/tea,
 		/datum/reagent/consumable/drink/tea/icetea,
 		/datum/reagent/consumable/drink/cold/space_cola,

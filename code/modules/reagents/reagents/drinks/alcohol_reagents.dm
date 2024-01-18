@@ -9,7 +9,7 @@
 	reagent_state = LIQUID
 	nutriment_factor = 0 //So alcohol can fill you up! If they want to.
 	taste_description = "alcohol"
-	custom_metabolism = 0.5 * REAGENTS_METABOLISM
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/beer
 	fallback_icon = 'icons/obj/drinks/bottles.dmi'
 	fallback_icon_state = "beer"
@@ -464,7 +464,7 @@
 	description = "Drink this and prepare for the LAW."
 	color = "#808000" // rgb: 128,128,0
 	boozepwr = 60 //THE FIST OF THE LAW IS STRONG AND HARD
-	custom_metabolism = 1.25 * REAGENTS_METABOLISM
+	metabolization_rate = 1.25 * REAGENTS_METABOLISM
 	taste_description = "JUSTICE"
 	overdose_threshold = 40
 
@@ -787,7 +787,7 @@
 	description = "Whiskey sour/iron/uranium mixture resulting in a highly magnetic slurry. Mild alcohol content." //Requires no alcohol to make but has alcohol anyway because ~magic~
 	color = rgb(255, 91, 15)
 	boozepwr = 10
-	custom_metabolism = 0.1 * REAGENTS_METABOLISM
+	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	taste_description = "charged metal" // the same as teslium, honk honk.
 
 /datum/reagent/consumable/ethanol/hearty_punch
@@ -795,7 +795,7 @@
 	description = "Brave bull/syndicate bomb/absinthe mixture resulting in an energizing beverage. Mild alcohol content."
 	color = rgb(140, 0, 0)
 	boozepwr = 90
-	custom_metabolism = 0.4 * REAGENTS_METABOLISM
+	metabolization_rate = 0.4 * REAGENTS_METABOLISM
 	taste_description = "bravado in the face of disaster"
 
 /datum/reagent/consumable/ethanol/bacchus_blessing //An EXTREMELY powerful drink. Smashed in seconds, dead in minutes.
@@ -825,7 +825,7 @@
 	color = "#2E2E61" // rgb: 46, 46, 97
 	boozepwr = 50
 	taste_description = "a numbing sensation"
-	custom_metabolism = 1 * REAGENTS_METABOLISM
+	metabolization_rate = 1 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/ethanol/hippies_delight
 	name = "Hippie's Delight"
@@ -833,7 +833,7 @@
 	color = "#b16e8b" // rgb: 177,110,139
 	nutriment_factor = 0
 	boozepwr = 0 //custom drunk effect
-	custom_metabolism = 0.2 * REAGENTS_METABOLISM
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	taste_description = "giving peace a chance"
 
 /datum/reagent/consumable/ethanol/eggnog
@@ -921,7 +921,7 @@
 	color = "#00FFFF"
 	boozepwr = 30
 	taste_description = "hot herbal brew with a hint of fruit"
-	custom_metabolism = 2 * REAGENTS_METABOLISM //0.4u per second
+	metabolization_rate = 2 * REAGENTS_METABOLISM //0.4u per second
 
 /datum/reagent/consumable/ethanol/squirt_cider
 	name = "Squirt Cider"

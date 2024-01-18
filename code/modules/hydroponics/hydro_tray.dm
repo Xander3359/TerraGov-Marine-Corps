@@ -58,7 +58,7 @@
 		/datum/reagent/radium = 2
 		)
 	var/global/list/nutrient_reagents = list(
-		/datum/reagent/consumable/drink/milk = 0.1,
+		/datum/reagent/consumable/milk = 0.1,
 		/datum/reagent/consumable/ethanol/beer = 0.25,
 		/datum/reagent/phosphorus = 0.1,
 		/datum/reagent/consumable/sugar = 0.1,
@@ -89,7 +89,7 @@
 	var/global/list/water_reagents = list(
 		/datum/reagent/water = 1,
 		/datum/reagent/medicine/adminordrazine = 1,
-		/datum/reagent/consumable/drink/milk = 0.9,
+		/datum/reagent/consumable/milk = 0.9,
 		/datum/reagent/consumable/ethanol/beer = 0.7,
 		/datum/reagent/fluorine = -0.5,
 		/datum/reagent/chlorine = -0.5,

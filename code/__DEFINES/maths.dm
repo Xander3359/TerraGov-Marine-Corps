@@ -1,3 +1,13 @@
+// Remove these once we have Byond implementation.
+// ------------------------------------
+#define IS_NAN(a) (a != a)
+
+#define IS_INF__UNSAFE(a) (a == a && a-a != a-a)
+#define IS_INF(a) (isnum(a) && IS_INF__UNSAFE(a))
+
+#define IS_FINITE__UNSAFE(a) (a-a == a-a)
+#define IS_FINITE(a) (isnum(a) && IS_FINITE__UNSAFE(a))
+
 // Credits to Nickr5 for the useful procs I've taken from his library resource.
 // This file is quadruple wrapped for your pleasure
 // (

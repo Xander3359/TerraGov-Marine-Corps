@@ -30,12 +30,12 @@
 				name = "Ale glass"
 				desc = "A freezing pint of delicious Ale"
 				center_of_mass = list("x"=16, "y"=8)
-			if(/datum/reagent/consumable/drink/milk)
+			if(/datum/reagent/consumable/milk)
 				icon_state = "glass_white"
 				name = "Glass of milk"
 				desc = "White and nutritious goodness!"
 				center_of_mass = list("x"=16, "y"=10)
-			if(/datum/reagent/consumable/drink/milk/cream)
+			if(/datum/reagent/consumable/milk/cream)
 				icon_state = "glass_white"
 				name = "Glass of cream"
 				desc = "Ewwww..."
@@ -329,7 +329,7 @@
 				name = "Moonshine"
 				desc = "You've really hit rock bottom now... your liver packed its bags and left last night."
 				center_of_mass = list("x"=16, "y"=10)
-			if(/datum/reagent/consumable/drink/milk/soymilk)
+			if(/datum/reagent/consumable/milk/soymilk)
 				icon_state = "glass_white"
 				name = "Glass of soy milk"
 				desc = "White and nutritious soy goodness!"

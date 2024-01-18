@@ -357,6 +357,10 @@
 #define COMSIG_ITEM_WIELD "item_wield"
 #define COMSIG_ITEM_UNWIELD "item_unwield"                      //from base of obj/item/
 #define COMSIG_ITEM_AFTERATTACK "item_afterattack"				//from base of obj/item/afterattack(): (atom/target, mob/user, has_proximity, click_parameters)
+	/// Flag for when /afterattack potentially acts on an item.
+	/// Used for the swap hands/drop tutorials to know when you might just be trying to do something normally.
+	/// Does not necessarily imply success, or even that it did hit an item, just intent.
+	#define COMPONENT_AFTERATTACK_PROCESSED_ITEM (1<<0)
 #define COMSIG_ITEM_AFTERATTACK_ALTERNATE "item_afterattack_alternate"	//from base of obj/item/afterattack_alternate(): (atom/target, mob/user, has_proximity, click_parameters)
 #define COMSIG_ITEM_ATTACK_OBJ "item_attack_obj"				//from base of obj/item/attack_obj(): (/obj, /mob)
 	#define COMPONENT_NO_ATTACK_OBJ (1<<0)

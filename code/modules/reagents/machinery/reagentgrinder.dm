@@ -27,7 +27,7 @@
 		/obj/item/alien_embryo = list(/datum/reagent/consumable/larvajelly = 5),
 
 		//Blender Stuff
-		/obj/item/reagent_containers/food/snacks/grown/soybeans = list(/datum/reagent/consumable/drink/milk/soymilk = 0),
+		/obj/item/reagent_containers/food/snacks/grown/soybeans = list(/datum/reagent/consumable/milk/soymilk = 0),
 		/obj/item/reagent_containers/food/snacks/grown/tomato = list(/datum/reagent/consumable/ketchup = 0),
 		/obj/item/reagent_containers/food/snacks/grown/corn = list(/datum/reagent/consumable/cornoil = 0),
 		///obj/item/reagent_containers/food/snacks/grown/wheat = list("flour" = -5),

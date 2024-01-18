@@ -10,7 +10,7 @@
 /datum/reagent/consumable
 	name = "Consumable"
 	taste_description = "generic food"
-	custom_metabolism = FOOD_METABOLISM
+	metabolization_rate = FOOD_METABOLISM
 	taste_multi = 4
 	/// How much nutrition this reagent supplies
 	var/nutriment_factor = 1
@@ -24,7 +24,7 @@
 		C.adjust_nutrition(nutriment_factor*0.5*effect_str)
 	if(adj_temp)
 		L.adjust_bodytemperature(adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT, (adj_temp < 0 ? targ_temp : INFINITY), (adj_temp > 0 ? 0 : targ_temp))
-	holder.remove_reagent(type, custom_metabolism)
+	holder.remove_reagent(type, metabolization_rate)
 	return TRUE
 
 /datum/reagent/consumable/nutriment
@@ -165,7 +165,7 @@
 	taste_multi = 0.8
 	taste_description = "oil"
 	nutriment_factor = 7 //Not very healthy on its own
-	custom_metabolism = 10 * REAGENTS_METABOLISM
+	metabolization_rate = 10 * REAGENTS_METABOLISM
 	penetrates_skin = NONE
 	default_container = /obj/item/reagent_containers/condiment/vegetable_oil
 
@@ -446,7 +446,7 @@
 	description = "Crushed garlic. Chefs love it, but it can make you smell bad."
 	color = "#FEFEFE"
 	taste_description = "garlic"
-	custom_metabolism = 0.15 * REAGENTS_METABOLISM
+	metabolization_rate = 0.15 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/garlic/on_mob_add(mob/living/affected_mob, amount)
 	. = ..()
@@ -689,7 +689,7 @@
 	name = "Corn Syrup"
 	description = "Decays into sugar."
 	color = "#DBCE95"
-	custom_metabolism = 3 * REAGENTS_METABOLISM
+	metabolization_rate = 3 * REAGENTS_METABOLISM
 	taste_description = "sweet slime"
 
 /datum/reagent/consumable/corn_syrup/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
@@ -701,7 +701,7 @@
 	description = "Sweet sweet honey that decays into sugar. Has antibacterial and natural healing properties."
 	color = "#d3a308"
 	nutriment_factor = 15
-	custom_metabolism = 1 * REAGENTS_METABOLISM
+	metabolization_rate = 1 * REAGENTS_METABOLISM
 	taste_description = "sweetness"
 	default_container = /obj/item/reagent_containers/condiment/honey
 
@@ -801,7 +801,7 @@
 	. = ..()
 	if(!exposed_mob.reagents) // they won't process the reagent, but still benefit from its effects for a duration.
 		var/amount = round(reac_volume * clamp(1 - touch_protection, 0, 1))
-		var/duration = (amount / custom_metabolism) * SSmobs.wait
+		var/duration = (amount / metabolization_rate) * SSmobs.wait
 		if(duration > 1 SECONDS)
 			exposed_mob.adjust_timed_status_effect(duration, /datum/status_effect/tinlux_light)
 
@@ -861,7 +861,7 @@
 	name = "Astrotame"
 	description = "A space age artifical sweetener."
 	nutriment_factor = 0
-	custom_metabolism = 2 * REAGENTS_METABOLISM
+	metabolization_rate = 2 * REAGENTS_METABOLISM
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255, 255, 255
 	taste_multi = 8
@@ -991,7 +991,7 @@
 	description = "A sweet, sugary syrup made from crushed sweet korta nuts."
 	color = "#d3a308"
 	nutriment_factor = 5
-	custom_metabolism = 1 * REAGENTS_METABOLISM
+	metabolization_rate = 1 * REAGENTS_METABOLISM
 	taste_description = "peppery sweetness"
 
 /datum/reagent/consumable/whipped_cream

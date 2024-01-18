@@ -252,7 +252,7 @@
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=8)
 	isGlass = 0
-	list_reagents = list(/datum/reagent/consumable/drink/milk/cream = 100)
+	list_reagents = list(/datum/reagent/consumable/milk/cream = 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/tomatojuice
 	name = "Tomato Juice"

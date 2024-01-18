@@ -130,7 +130,7 @@
 /datum/chemical_reaction/virus_food
 	name = "Virus Food"
 	results = list(/datum/reagent/consumable/virus_food = 15)
-	required_reagents = list(/datum/reagent/water = 5, /datum/reagent/consumable/drink/milk = 5, /datum/reagent/oxygen = 5)
+	required_reagents = list(/datum/reagent/water = 5, /datum/reagent/consumable/milk = 5, /datum/reagent/oxygen = 5)
 
 
 ///////////////////////////////////////////////////////////////////////////////////

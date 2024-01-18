@@ -130,7 +130,7 @@
 	icon_state = "milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
-	list_reagents = list(/datum/reagent/consumable/drink/milk = 50)
+	list_reagents = list(/datum/reagent/consumable/milk = 50)
 
 /obj/item/reagent_containers/food/drinks/soymilk
 	name = "soy milk"
@@ -138,7 +138,7 @@
 	icon_state = "soymilk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
-	list_reagents = list(/datum/reagent/consumable/drink/milk/soymilk = 50)
+	list_reagents = list(/datum/reagent/consumable/milk/soymilk = 50)
 
 /obj/item/reagent_containers/food/drinks/coffee
 	name = "\improper Coffee"

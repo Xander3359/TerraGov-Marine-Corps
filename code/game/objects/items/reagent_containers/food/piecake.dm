@@ -370,14 +370,14 @@
 	desc = "A spaceman's trumpet frosted cake."
 	icon_state = "trumpetcake"
 	slice_path = /obj/item/reagent_containers/food/snacks/pastries/cakeslicetrumpet
-	list_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 5, /datum/reagent/consumable/drink/milk = 5, /datum/reagent/consumable/nutriment/vitamin = 5, /datum/reagent/consumable/drink/berryjuice = 5)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 5, /datum/reagent/consumable/milk = 5, /datum/reagent/consumable/nutriment/vitamin = 5, /datum/reagent/consumable/drink/berryjuice = 5)
 	tastes = list("cake" = 4, "violets" = 2, "jam" = 2)
 
 /obj/item/reagent_containers/food/snacks/pastries/cakeslicetrumpet
 	name = "spaceman's cake"
 	desc = "A spaceman's trumpet frosted cake."
 	icon_state = "trumpetcakeslice"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/drink/milk = 1, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/drink/berryjuice = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/drink/berryjuice = 1)
 	tastes = list("cake" = 4, "violets" = 2, "jam" = 2)
 
 /obj/item/reagent_containers/food/snacks/sliceable/pastries/brioche

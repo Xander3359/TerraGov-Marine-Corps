@@ -141,7 +141,7 @@
 /datum/reagent/consumable/laughter
 	name = "Laughter"
 	description = "Some say that this is the best medicine, but recent studies have proven that to be untrue."
-	custom_metabolism = INFINITY
+	metabolization_rate = INFINITY
 	color = "#FF4DD2"
 	taste_description = "laughter"
 
@@ -156,25 +156,25 @@
 	color = "#302000" // rgb: 48, 32, 0
 	taste_description = "irish sadness"
 
-/datum/reagent/consumable/drink/milk
+/datum/reagent/consumable/milk
 	name = "Milk"
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	color = "#DFDFDF" // rgb: 223, 223, 223
 	taste_description = "milk"
 
-/datum/reagent/consumable/drink/milk/on_mob_life(mob/living/L, metabolism)
+/datum/reagent/consumable/milk/on_mob_life(mob/living/L, metabolism)
 	L.heal_limb_damage(0.2)
 	if(holder.has_reagent(/datum/reagent/consumable/capsaicin))
 		holder.remove_reagent(/datum/reagent/consumable/capsaicin, 2)
 	return ..()
 
-/datum/reagent/consumable/drink/milk/soymilk
+/datum/reagent/consumable/milk/soymilk
 	name = "Soy Milk"
 	description = "An opaque white liquid made from soybeans."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 	taste_description = "soy milk"
 
-/datum/reagent/consumable/drink/milk/cream
+/datum/reagent/consumable/milk/cream
 	name = "Cream"
 	description = "The fatty, still liquid part of milk. Why don't you mix this with sum scotch, eh?"
 	color = "#DFD7AF" // rgb: 223, 215, 175
@@ -201,7 +201,7 @@
 	nutriment_factor = 0
 	overdose_threshold = REAGENTS_OVERDOSE * 2
 	overdose_crit_threshold = REAGENTS_OVERDOSE_CRITICAL * 3
-	custom_metabolism = REAGENTS_METABOLISM * 5 //1u/tick
+	metabolization_rate = REAGENTS_METABOLISM * 5 //1u/tick
 	adj_dizzy = -5
 	adj_drowsy = -3
 	adj_sleepy = -2
@@ -241,7 +241,7 @@
 	nutriment_factor = 0
 	overdose_threshold = REAGENTS_OVERDOSE * 2
 	overdose_crit_threshold = REAGENTS_OVERDOSE_CRITICAL * 3
-	custom_metabolism = REAGENTS_METABOLISM * 5 //1u/tick
+	metabolization_rate = REAGENTS_METABOLISM * 5 //1u/tick
 	adj_dizzy = -5
 	adj_drowsy = -3
 	adj_sleepy = -2
@@ -470,7 +470,7 @@
 	color = "#FF8CFF" // rgb: 255, 140, 255
 	taste_description = "homely fruit"
 	nutriment_factor = - 1
-	custom_metabolism = REAGENTS_METABOLISM * 0.25 //Twice the rate of paracetamol
+	metabolization_rate = REAGENTS_METABOLISM * 0.25 //Twice the rate of paracetamol
 	adj_dizzy = - 10
 
 /datum/reagent/consumable/drink/doctor_delight/on_mob_life(mob/living/L, metabolism)

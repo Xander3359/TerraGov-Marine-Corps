@@ -319,7 +319,7 @@
 	name = "oatmeal"
 	desc = "A nice bowl of oatmeal."
 	icon_state = "oatmeal"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 11, /datum/reagent/consumable/drink/milk = 10, /datum/reagent/consumable/nutriment/vitamin = 6)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 11, /datum/reagent/consumable/milk = 10, /datum/reagent/consumable/nutriment/vitamin = 6)
 	tastes = list("oats" = 1, "milk" = 1)
 
 /obj/item/reagent_containers/food/snacks/soup/zurek

@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	/// can this reagent be synthesized? (for example: odysseus syringe gun)
 	var/can_synth = TRUE
 	///how fast the reagent is metabolized by the mob
-	var/custom_metabolism = REAGENTS_METABOLISM //how fast the reagent is metabolized by the mob
+	var/metabolization_rate = REAGENTS_METABOLISM //how fast the reagent is metabolized by the mob
 	/// You fucked up and this is now triggering its overdose effects, purge that shit quick.
 	var/overdosed = FALSE
 	/// You really fucked up and now getting the worst of the worse.
@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/on_mob_life(mob/living/L, metabolism)
 	purge(L)
 	current_cycle++
-	holder.remove_reagent(type, custom_metabolism * L.metabolism_efficiency) //By default it slowly disappears.
+	holder.remove_reagent(type, metabolization_rate * L.metabolism_efficiency) //By default it slowly disappears.
 	return TRUE
 
 /// Called when this reagent is first added to a mob

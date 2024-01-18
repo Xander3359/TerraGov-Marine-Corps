@@ -3,7 +3,7 @@
 /datum/chemical_reaction/tofu
 	name = "Tofu"
 	results = null
-	required_reagents = list(/datum/reagent/consumable/drink/milk/soymilk = 10)
+	required_reagents = list(/datum/reagent/consumable/milk/soymilk = 10)
 	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 
 /datum/chemical_reaction/tofu/on_reaction(datum/reagents/holder, created_volume)
@@ -15,7 +15,7 @@
 /datum/chemical_reaction/chocolate_bar
 	name = "Chocolate Bar"
 	results = null
-	required_reagents = list(/datum/reagent/consumable/drink/milk/soymilk = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/sugar = 2)
+	required_reagents = list(/datum/reagent/consumable/milk/soymilk = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/sugar = 2)
 
 /datum/chemical_reaction/chocolate_bar/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.get_holder())
@@ -26,7 +26,7 @@
 /datum/chemical_reaction/chocolate_bar2
 	name = "Chocolate Bar"
 	results = null
-	required_reagents = list(/datum/reagent/consumable/drink/milk = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/sugar = 2)
+	required_reagents = list(/datum/reagent/consumable/milk = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/sugar = 2)
 
 /datum/chemical_reaction/chocolate_bar2/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.get_holder())
@@ -42,7 +42,7 @@
 /datum/chemical_reaction/soysauce
 	name = "Soy Sauce"
 	results = list(/datum/reagent/consumable/soysauce = 5)
-	required_reagents = list(/datum/reagent/consumable/drink/milk/soymilk = 4, /datum/reagent/toxin/acid = 1)
+	required_reagents = list(/datum/reagent/consumable/milk/soymilk = 4, /datum/reagent/toxin/acid = 1)
 
 /datum/chemical_reaction/condensedcapsaicin
 	name = "Condensed Capsaicin"
@@ -58,7 +58,7 @@
 /datum/chemical_reaction/cheesewheel
 	name = "Cheesewheel"
 	results = null
-	required_reagents = list(/datum/reagent/consumable/drink/milk = 40)
+	required_reagents = list(/datum/reagent/consumable/milk = 40)
 	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 
 /datum/chemical_reaction/cheesewheel/on_reaction(datum/reagents/holder, created_volume)
@@ -103,7 +103,7 @@
 /datum/chemical_reaction/bilk
 	name = "Bilk"
 	results = list(/datum/reagent/consumable/ethanol/bilk = 2)
-	required_reagents = list(/datum/reagent/consumable/drink/milk = 1, /datum/reagent/consumable/ethanol/beer = 1)
+	required_reagents = list(/datum/reagent/consumable/milk = 1, /datum/reagent/consumable/ethanol/beer = 1)
 
 /datum/chemical_reaction/icetea
 	name = "Iced Tea"
@@ -203,7 +203,7 @@
 /datum/chemical_reaction/white_russian
 	name = "White Russian"
 	results = list(/datum/reagent/consumable/ethanol/white_russian = 5)
-	required_reagents = list(/datum/reagent/consumable/ethanol/black_russian = 3, /datum/reagent/consumable/drink/milk/cream = 2)
+	required_reagents = list(/datum/reagent/consumable/ethanol/black_russian = 3, /datum/reagent/consumable/milk/cream = 2)
 
 /datum/chemical_reaction/whiskey_cola
 	name = "Whiskey Cola"
@@ -248,12 +248,12 @@
 /datum/chemical_reaction/doctor_delight
 	name = "The Doctor's Delight"
 	results = list(/datum/reagent/consumable/drink/doctor_delight = 5)
-	required_reagents = list(/datum/reagent/consumable/drink/limejuice = 1, /datum/reagent/consumable/drink/tomatojuice = 1, /datum/reagent/consumable/drink/orangejuice = 1, /datum/reagent/consumable/drink/milk/cream = 1, /datum/reagent/medicine/tricordrazine = 1)
+	required_reagents = list(/datum/reagent/consumable/drink/limejuice = 1, /datum/reagent/consumable/drink/tomatojuice = 1, /datum/reagent/consumable/drink/orangejuice = 1, /datum/reagent/consumable/milk/cream = 1, /datum/reagent/medicine/tricordrazine = 1)
 
 /datum/chemical_reaction/irish_cream
 	name = "Irish Cream"
 	results = list(/datum/reagent/consumable/ethanol/irish_cream = 3)
-	required_reagents = list(/datum/reagent/consumable/ethanol/whiskey = 2, /datum/reagent/consumable/drink/milk/cream = 1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/whiskey = 2, /datum/reagent/consumable/milk/cream = 1)
 
 /datum/chemical_reaction/manly_dorf
 	name = "The Manly Dorf"
@@ -348,17 +348,17 @@
 /datum/chemical_reaction/booger
 	name = "Booger"
 	results = list(/datum/reagent/consumable/ethanol/booger = 4)
-	required_reagents = list(/datum/reagent/consumable/drink/milk/cream = 1, /datum/reagent/consumable/drink/banana = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/drink/watermelonjuice = 1)
+	required_reagents = list(/datum/reagent/consumable/milk/cream = 1, /datum/reagent/consumable/drink/banana = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/drink/watermelonjuice = 1)
 
 /datum/chemical_reaction/antifreeze
 	name = "Anti-freeze"
 	results = list(/datum/reagent/consumable/ethanol/antifreeze = 4)
-	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/drink/milk/cream = 1, /datum/reagent/consumable/drink/cold/ice = 1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/milk/cream = 1, /datum/reagent/consumable/drink/cold/ice = 1)
 
 /datum/chemical_reaction/barefoot
 	name = "Barefoot"
 	results = list(/datum/reagent/consumable/ethanol/barefoot = 3)
-	required_reagents = list(/datum/reagent/consumable/drink/berryjuice = 1, /datum/reagent/consumable/drink/milk/cream = 1, /datum/reagent/consumable/ethanol/vermouth = 1)
+	required_reagents = list(/datum/reagent/consumable/drink/berryjuice = 1, /datum/reagent/consumable/milk/cream = 1, /datum/reagent/consumable/ethanol/vermouth = 1)
 
 /datum/chemical_reaction/grapesoda
 	name = "Grape Soda"
@@ -403,12 +403,12 @@
 /datum/chemical_reaction/soy_latte
 	name = "Soy Latte"
 	results = list(/datum/reagent/consumable/drink/coffee/soy_latte = 2)
-	required_reagents = list(/datum/reagent/consumable/drink/coffee = 1, /datum/reagent/consumable/drink/milk/soymilk = 1)
+	required_reagents = list(/datum/reagent/consumable/drink/coffee = 1, /datum/reagent/consumable/milk/soymilk = 1)
 
 /datum/chemical_reaction/cafe_latte
 	name = "Cafe Latte"
 	results = list(/datum/reagent/consumable/drink/coffee/cafe_latte = 2)
-	required_reagents = list(/datum/reagent/consumable/drink/coffee = 1, /datum/reagent/consumable/drink/milk = 1)
+	required_reagents = list(/datum/reagent/consumable/drink/coffee = 1, /datum/reagent/consumable/milk = 1)
 
 /datum/chemical_reaction/acidspit
 	name = "Acid Spit"
@@ -428,7 +428,7 @@
 /datum/chemical_reaction/aloe
 	name = "Aloe"
 	results = list(/datum/reagent/consumable/ethanol/aloe = 2)
-	required_reagents = list(/datum/reagent/consumable/drink/milk/cream = 1, /datum/reagent/consumable/ethanol/whiskey = 1, /datum/reagent/consumable/drink/watermelonjuice = 1)
+	required_reagents = list(/datum/reagent/consumable/milk/cream = 1, /datum/reagent/consumable/ethanol/whiskey = 1, /datum/reagent/consumable/drink/watermelonjuice = 1)
 
 /datum/chemical_reaction/andalusia
 	name = "Andalusia"
@@ -474,12 +474,12 @@
 /datum/chemical_reaction/bananahonk
 	name = "Banana Honk"
 	results = list(/datum/reagent/consumable/ethanol/bananahonk = 3)
-	required_reagents = list(/datum/reagent/consumable/drink/banana = 1, /datum/reagent/consumable/drink/milk/cream = 1, /datum/reagent/consumable/sugar = 1)
+	required_reagents = list(/datum/reagent/consumable/drink/banana = 1, /datum/reagent/consumable/milk/cream = 1, /datum/reagent/consumable/sugar = 1)
 
 /datum/chemical_reaction/silencer
 	name = "Silencer"
 	results = list(/datum/reagent/consumable/ethanol/silencer = 3)
-	required_reagents = list(/datum/reagent/consumable/drink/nothing = 1, /datum/reagent/consumable/drink/milk/cream = 1, /datum/reagent/consumable/sugar = 1)
+	required_reagents = list(/datum/reagent/consumable/drink/nothing = 1, /datum/reagent/consumable/milk/cream = 1, /datum/reagent/consumable/sugar = 1)
 
 /datum/chemical_reaction/driestmartini
 	name = "Driest Martini"
@@ -504,7 +504,7 @@
 /datum/chemical_reaction/milkshake
 	name = "Milkshake"
 	results = list(/datum/reagent/consumable/drink/cold/milkshake = 5)
-	required_reagents = list(/datum/reagent/consumable/drink/milk/cream = 1, /datum/reagent/consumable/drink/cold/ice = 2, /datum/reagent/consumable/drink/milk = 2)
+	required_reagents = list(/datum/reagent/consumable/milk/cream = 1, /datum/reagent/consumable/drink/cold/ice = 2, /datum/reagent/consumable/milk = 2)
 
 /datum/chemical_reaction/rewriter
 	name = "Rewriter"

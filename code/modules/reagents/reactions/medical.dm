@@ -200,7 +200,7 @@
 /datum/chemical_reaction/bihexajuline
 	name = "Bihexajuline"
 	results = list(/datum/reagent/medicine/bihexajuline = 5)
-	required_reagents = list(/datum/reagent/medicine/bicaridine = 2, /datum/reagent/consumable/drink/milk = 1, /datum/reagent/iron = 2)
+	required_reagents = list(/datum/reagent/medicine/bicaridine = 2, /datum/reagent/consumable/milk = 1, /datum/reagent/iron = 2)
 
 /datum/chemical_reaction/quietus
 	name = "Quietus"
