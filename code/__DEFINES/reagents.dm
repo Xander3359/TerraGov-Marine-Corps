@@ -37,6 +37,11 @@
 #define ADD_REAGENT 2	// reagent added
 #define REM_REAGENT 3	// reagent removed (may still exist)
 
+//used by the chem master
+#define CAT_BOTTLES "printable_bottles"
+#define CAT_AUTOINJECTORS "printable_autoinjectors"
+#define CAT_PILL_BOTTLES "printable_pill_bottles"
+#define CAT_PILLS "printable_pills"
 
 #define REAGENTS_OVERDOSE 30
 #define REAGENTS_OVERDOSE_CRITICAL 50

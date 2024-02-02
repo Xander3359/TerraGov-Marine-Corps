@@ -526,3 +526,14 @@
 	set_greyscale_colors(list(bottle_color,label_color))
 	paint.uses--
 	update_icon()
+
+//For the chemmaster
+
+/obj/item/storage/pill_bottle/custom
+	icon_state = "pill_canister"
+
+/obj/item/storage/pill_bottle/custom/one
+	icon_state = "pill_spire"
+
+/obj/item/storage/pill_bottle/custom/two
+	icon_state = "pill_crate"

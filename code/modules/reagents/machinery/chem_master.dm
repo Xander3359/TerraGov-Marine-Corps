@@ -1,3 +1,6 @@
+#define TRANSFER_MODE_DESTROY 0
+#define TRANSFER_MODE_MOVE 1
+
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
 	desc = "Used to separate chemicals and distribute them in a variety of forms."
@@ -8,20 +11,32 @@
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
+	interaction_flags = INTERACT_MACHINE_TGUI
 
+	///The current beaker inside our machine
 	var/obj/item/reagent_containers/beaker = null
+	///The current pill bottle inside our machine
 	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
-	var/mode = 0
+	///Current transfer mode, TRANSFER_MODE_DESTROY will delete chems in the buffer, TRANSFER_MODE_MOVE will move chems from the buffer to the loaded beaker
+	var/transfer_mode = TRANSFER_MODE_DESTROY
 	var/condi = FALSE
-	var/useramount = 30 // Last used amount
+	/// Last used amount
+	var/useramount = 30
 	var/pillamount = 16
+	var/base_state = "mixer"
+
+	/// List of printable container types
+	var/list/printable_containers = list()
+	/// Selected printable container type (REF)
+	var/selected_container
+
 	var/pillbottlesprite = "1"
 	var/bottlesprite = "1" //yes, strings
 	var/pillsprite = "1"
-	var/base_state = "mixer"
 	var/autoinjectorsprite = "11"
+
 	var/client/has_sprites = list()
-	var/max_pill_count = 20
+	var/max_pill_count = 16
 	var/pill_bottle_names = list(
 		"pill_canister",
 		"round_pill_bottle",
@@ -43,6 +58,7 @@
 /obj/machinery/chem_master/Initialize(mapload)
 	. = ..()
 	var/datum/reagents/R = new/datum/reagents(240)
+	load_printable_containers()
 	reagents = R
 	R.my_atom = WEAKREF(src)
 
@@ -100,7 +116,7 @@
 			else if(dest.reagents)
 				source.reagents.trans_id_to(dest, reagent_id, amount)
 
-/obj/machinery/chem_master/proc/replace_beaker(mob/user)
+/obj/machinery/chem_master/proc/remove_beaker(mob/user)
 	if(beaker)
 		beaker.forceMove(drop_location())
 		if(user && Adjacent(user) && !issiliconoradminghost(user))
@@ -111,6 +127,116 @@
 	icon_state = "mixer0"
 	return TRUE
 
+/obj/machinery/chem_master/proc/remove_pill_bottle(mob/user)
+	if(loaded_pill_bottle)
+		loaded_pill_bottle.forceMove(drop_location())
+		if(user && Adjacent(user) && !issiliconoradminghost(user))
+			user.put_in_hands(loaded_pill_bottle)
+
+	loaded_pill_bottle = null
+	return TRUE
+
+/obj/machinery/chem_master/ui_interact(mob/user, datum/tgui/ui)
+	if(user.skills.getRating(SKILL_MEDICAL) < SKILL_MEDICAL_PRACTICED)
+		balloon_alert(user, "skill issue")
+		return
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChemMaster", name)
+		ui.open()
+
+/obj/machinery/chem_master/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	if(action == "LoadPillBottle")
+		return
+
+	if(action == "ChangePillBottle")
+		return
+
+	if(action == "EjectPillBottle")
+		remove_pill_bottle(usr)
+
+	if(action == "EjectBeaker")
+		remove_beaker(usr)
+
+	if(action == "selectContainer")
+		selected_container = params["ref"]
+		return TRUE
+
+	if(action == "CreateBottle")
+		return
+
+	if(action == "ChangeBottle")
+		return
+
+	if(action == "CreateAuto")
+		return
+
+	if(action == "ChangeAuto")
+		return
+
+/obj/machinery/chem_master/proc/load_printable_containers()
+	printable_containers = list(
+		CAT_BOTTLES = GLOB.reagent_containers[CAT_BOTTLES],
+		CAT_AUTOINJECTORS = GLOB.reagent_containers[CAT_AUTOINJECTORS],
+		CAT_PILL_BOTTLES = GLOB.reagent_containers[CAT_PILL_BOTTLES],
+		CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
+	)
+
+/obj/machinery/chem_master/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/chemmaster)
+	)
+
+/obj/machinery/chem_master/ui_static_data(mob/user)
+	var/list/data = list()
+	data["categories"] = list()
+	for(var/category in printable_containers)
+		var/container_data = list()
+		for(var/obj/item/reagent_containers/container as anything in printable_containers[category])
+			container_data += list(list(
+				"icon" = sanitize_css_class_name("[container]"),
+				"ref" = REF(container),
+				"name" = initial(container.name),
+				"volume" = initial(container.volume),
+			))
+		data["categories"]+= list(list(
+			"name" = category,
+			"containers" = container_data,
+		))
+
+	return data
+
+/obj/machinery/chem_master/ui_data(mob/user)
+	var/list/data = list()
+
+	data["selectedContainerRef"] = selected_container
+	data["transferMode"] = transfer_mode
+	data["maxPillCount"] = max_pill_count
+
+	data["hasPillBottle"] = loaded_pill_bottle ? TRUE : FALSE
+	if(loaded_pill_bottle)
+		data["currentPillBottleAmount"] = length(loaded_pill_bottle.contents)
+		data["maxPillBottlePills"] = loaded_pill_bottle.max_storage_space
+
+	data["hasBeaker"] = beaker ? TRUE : FALSE
+	var/list/beaker_contents = list() //What does our beaker contain
+	if(beaker)
+		for(var/datum/reagent/reagent in beaker.reagents.reagent_list)
+			beaker_contents.Add(list(list("name" = reagent.name, "ref" = REF(reagent), "volume" = round(reagent.volume, 0.01))))
+	data["beakerContents"] = beaker_contents
+
+	var/list/buffer_contents = list() //What does the chem master contain
+	if(reagents.total_volume)
+		for(var/datum/reagent/reagent in reagents.reagent_list)
+			buffer_contents.Add(list(list("name" = reagent.name, "ref" = REF(reagent), "volume" = round(reagent.volume, 0.01))))
+	data["bufferContents"] = buffer_contents
+
+	return data
 
 /obj/machinery/chem_master/Topic(href, href_list)
 	. = ..()
@@ -173,10 +299,10 @@
 				var/id = text2path(href_list["remove"])
 				var/amount = text2num(href_list["amount"])
 				if(amount < 0) //href protection
-					log_admin_private("[key_name(usr)] attempted to transfer a negative amount of [id] ([amount]) to [mode ? beaker : "disposal"] in [src] at [AREACOORD(usr.loc)].")
-					message_admins("[ADMIN_TPMONTY(usr)] attempted to transfer a negative amount of [id] ([amount]) to [mode ? beaker : "disposal"] in [src]. Possible HREF exploit.")
+					log_admin_private("[key_name(usr)] attempted to transfer a negative amount of [id] ([amount]) to [transfer_mode ? beaker : "disposal"] in [src] at [AREACOORD(usr.loc)].")
+					message_admins("[ADMIN_TPMONTY(usr)] attempted to transfer a negative amount of [id] ([amount]) to [transfer_mode ? beaker : "disposal"] in [src]. Possible HREF exploit.")
 					return
-				if(mode)
+				if(transfer_mode)
 					transfer_chemicals(beaker, src, amount, id)
 				else
 					transfer_chemicals(null, src, amount, id)
@@ -186,19 +312,19 @@
 
 			var/id = text2path(href_list["removecustom"])
 			useramount = tgui_input_number(usr, "Select the amount to transfer.", 30, useramount)
-			if(mode)
+			if(transfer_mode)
 				transfer_chemicals(beaker, src, useramount, id)
 			else
 				transfer_chemicals(null, src, useramount, id)
 
 		else if (href_list["toggle"])
-			mode = !mode
+			transfer_mode = !transfer_mode
 
 		else if (href_list["main"])
 			attack_hand(user)
 			return
 		else if (href_list["eject"])
-			replace_beaker(usr)
+			remove_beaker(usr)
 
 		else if (href_list["createpillbottle"])
 			if(!condi)
@@ -383,7 +509,7 @@
 				dat += "<A href='?src=[text_ref(src)];add=[G.type];amount=[G.volume]'>(All)</A> "
 				dat += "<A href='?src=[text_ref(src)];addcustom=[G.type]'>(Custom)</A><BR>"
 
-		dat += "<HR>Transfer to <A href='?src=[text_ref(src)];toggle=1'>[(!mode ? "disposal" : "beaker")]:</A><BR>"
+		dat += "<HR>Transfer to <A href='?src=[text_ref(src)];toggle=1'>[(!transfer_mode ? "disposal" : "beaker")]:</A><BR>"
 		if(reagents.total_volume)
 			for(var/datum/reagent/N in reagents.reagent_list)
 				dat += "[N.name] , [N.volume] Units - "
@@ -429,3 +555,6 @@
 
 /obj/machinery/chem_master/condimaster/nopower
 	use_power = NO_POWER_USE
+
+#undef TRANSFER_MODE_DESTROY
+#undef TRANSFER_MODE_MOVE

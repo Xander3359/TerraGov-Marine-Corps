@@ -338,3 +338,41 @@
 
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 50)
 
+//For the chemmaster
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom
+	icon_state = "autoinjector-12"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/one
+	icon_state = "autoinjector-1"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/two
+	icon_state = "autoinjector-2"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/three
+	icon_state = "autoinjector-3"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/four
+	icon_state = "autoinjector-4"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/five
+	icon_state = "autoinjector-5"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/six
+	icon_state = "autoinjector-6"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/seven
+	icon_state = "autoinjector-7"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/eight
+	icon_state = "autoinjector-8"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/nine
+	icon_state = "autoinjector-9"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/ten
+	icon_state = "autoinjector-10"
+
+/obj/item/reagent_containers/hypospray/autoinjector/custom/eleven
+	icon_state = "autoinjector-11"
+

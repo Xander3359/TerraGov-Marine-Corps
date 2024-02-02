@@ -27,7 +27,8 @@
 	var/list/_status_traits
 
 	var/hidden_from_codex = FALSE //set to TRUE if you want something to be hidden.
-	var/interaction_flags = NONE //Defined at the datum level since some can be interacted with.
+	///Defined at the datum level since some can be interacted with.
+	var/interaction_flags = NONE
 
 	/**
 	  * Components attached to this datum

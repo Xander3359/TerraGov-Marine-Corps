@@ -110,7 +110,7 @@
 
 /obj/machinery/chem_dispenser/AltClick(mob/user)
 	. = ..()
-	replace_beaker(user)
+	remove_beaker(user)
 
 
 /obj/machinery/chem_dispenser/proc/work_animation()
@@ -228,7 +228,7 @@
 				work_animation()
 				. = TRUE
 		if("eject")
-			replace_beaker(usr)
+			remove_beaker(usr)
 			. = TRUE
 		if("dispense_recipe")
 			if(!is_operational() || QDELETED(cell))
@@ -307,7 +307,7 @@
 			recording_recipe = null
 			. = TRUE
 
-/obj/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
+/obj/machinery/chem_dispenser/proc/remove_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
 	if(beaker)
 		beaker.forceMove(drop_location())
 		if(user && Adjacent(user) && !issiliconoradminghost(user))

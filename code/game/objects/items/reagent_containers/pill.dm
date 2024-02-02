@@ -246,3 +246,69 @@
 	//pill_desc = "An ultrazine pill. A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."
 	list_reagents = list(/datum/reagent/medicine/ultrazine = 5)
 	pill_id = 21
+
+//For the chemmaster
+
+/obj/item/reagent_containers/pill/custom
+	icon_state = "pill21"
+	volume = 15
+
+/obj/item/reagent_containers/pill/custom/one
+	icon_state = "pill1"
+
+/obj/item/reagent_containers/pill/custom/two
+	icon_state = "pill2"
+
+/obj/item/reagent_containers/pill/custom/three
+	icon_state = "pill3"
+
+/obj/item/reagent_containers/pill/custom/four
+	icon_state = "pill4"
+
+/obj/item/reagent_containers/pill/custom/five
+	icon_state = "pill5"
+
+/obj/item/reagent_containers/pill/custom/six
+	icon_state = "pill6"
+
+/obj/item/reagent_containers/pill/custom/seven
+	icon_state = "pill7"
+
+/obj/item/reagent_containers/pill/custom/eight
+	icon_state = "pill8"
+
+/obj/item/reagent_containers/pill/custom/nine
+	icon_state = "pill9"
+
+/obj/item/reagent_containers/pill/custom/ten
+	icon_state = "pill10"
+
+/obj/item/reagent_containers/pill/custom/eleven
+	icon_state = "pill11"
+
+/obj/item/reagent_containers/pill/custom/twelve
+	icon_state = "pill12"
+
+/obj/item/reagent_containers/pill/custom/thirteen
+	icon_state = "pill13"
+
+/obj/item/reagent_containers/pill/custom/fourteen
+	icon_state = "pill14"
+
+/obj/item/reagent_containers/pill/custom/fifteen
+	icon_state = "pill15"
+
+/obj/item/reagent_containers/pill/custom/sixteen
+	icon_state = "pill16"
+
+/obj/item/reagent_containers/pill/custom/seventeen
+	icon_state = "pill17"
+
+/obj/item/reagent_containers/pill/custom/eighteen
+	icon_state = "pill18"
+
+/obj/item/reagent_containers/pill/custom/nineteen
+	icon_state = "pill19"
+
+/obj/item/reagent_containers/pill/custom/twenty
+	icon_state = "pill20"
