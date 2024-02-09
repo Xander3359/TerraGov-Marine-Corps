@@ -127,3 +127,6 @@
   - rscadd: Adds Baneling to admin player panel tab.
   Xander3359:
   - code_imp: extra_checks use PROC_REF() for their callbacks
+2024-02-09:
+  Lumipharon:
+  - bugfix: fixed SG loadouts often not spawning everything they should
