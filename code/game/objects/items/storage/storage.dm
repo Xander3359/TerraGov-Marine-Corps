@@ -475,7 +475,7 @@
  * such as when picking up all the items on a tile with one click.
  * user can be null, it refers to the potential mob doing the insertion.
  */
-/obj/item/storage/proc/handle_item_insertion(obj/item/item, prevent_warning = 0, mob/user)
+/obj/item/storage/proc/handle_item_insertion(obj/item/item, prevent_warning = 0, mob/user, start_from_left = FALSE)
 	if(!istype(item))
 		return FALSE
 	if(!handle_access_delay(item, user, taking_out=FALSE))
@@ -487,6 +487,8 @@
 	else
 		item.forceMove(src)
 	item.on_enter_storage(src)
+	if(start_from_left)
+		contents.Swap(contents.Find(item), 1)
 	if(user)
 		if (user.s_active != src)
 			user.client?.screen -= item
@@ -553,18 +555,24 @@
 
 	return TRUE
 
-///This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/I, mob/user, params)
 	. = ..()
+	insert_item(I, user)
 
+///This proc is called when you want to place an item into the storage item.
+/obj/item/storage/proc/insert_item(obj/item/item_to_store, mob/user, start_from_left = FALSE)
 	if(length(refill_types))
 		for(var/typepath in refill_types)
-			if(istype(I, typepath))
-				return do_refill(I, user)
+			if(istype(item_to_store, typepath))
+				return do_refill(item_to_store, user)
 
-	if(!can_be_inserted(I))
+	if(!can_be_inserted(item_to_store))
 		return FALSE
-	return handle_item_insertion(I, FALSE, user)
+
+	if(start_from_left)
+		return handle_item_insertion(item_to_store, FALSE, user, start_from_left = TRUE)
+
+	return handle_item_insertion(item_to_store, FALSE, user)
 
 ///Refills the storage from the refill_types item
 /obj/item/storage/proc/do_refill(obj/item/storage/refiller, mob/user)
@@ -856,6 +864,10 @@
 
 /obj/item/storage/CtrlClick(mob/living/user)
 	. = ..()
+	if(user.get_active_held_item())
+		var/in_hand_item = user.get_active_held_item()
+		insert_item(in_hand_item, user, start_from_left = TRUE)
+		return
 	attempt_draw_object(user, TRUE)
 
 /**
