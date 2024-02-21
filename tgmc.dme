@@ -433,6 +433,7 @@
 #include "code\datums\components\tac_reload_storage.dm"
 #include "code\datums\components\throw_parry.dm"
 #include "code\datums\components\udder.dm"
+#include "code\datums\components\welding_fuel.dm"
 #include "code\datums\components\xeno_iff.dm"
 #include "code\datums\components\riding\riding.dm"
 #include "code\datums\components\riding\riding_mob.dm"
