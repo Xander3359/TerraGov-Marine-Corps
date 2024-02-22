@@ -1039,6 +1039,10 @@
 	/// Prevents click from happening.
 	#define COMPONENT_CANCEL_EQUIPMENT_CLICK (1<<0)
 
+// Signals for the welding_fuel_storage component
+///from base welding_fuel_storage/request_fuel()
+#define COMPONENT_ON_REQUEST_FUEL "component_on_request_fuel"
+
 /*******Non-Signal Component Related Defines*******/
 
 

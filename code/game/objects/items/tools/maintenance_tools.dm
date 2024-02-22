@@ -358,6 +358,9 @@
 
 /obj/item/tool/weldpack/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/welding_fuel_storage, 500)
+
+/*
 	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills
 	reagents = R
 	R.my_atom = WEAKREF(src)
@@ -438,11 +441,12 @@
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
 		balloon_alert(user, "Already full")
 		return
-
+*/
+/*
 /obj/item/tool/weldpack/examine(mob/user)
 	. = ..()
 	. += "[reagents.total_volume] units of welding fuel left!"
-
+*/
 /obj/item/tool/weldpack/marinestandard
 	name = "M-22 welding kit"
 	desc = "A heavy-duty, portable fuel carrier. Mainly used in flamethrowers. Welder and flamer compatible."
