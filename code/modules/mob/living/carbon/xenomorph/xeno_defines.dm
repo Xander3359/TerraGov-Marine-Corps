@@ -92,6 +92,8 @@
 	var/sunder_recover = 0.5
 	///What is the max amount of sunder that can be applied to a xeno (100 = 100%)
 	var/sunder_max = 100
+	///Multiplier on the weapons sunder, e.g 10 sunder on a projectile is reduced to 5 with a 0.5 multiplier.
+	var/sunder_multiplier = 1
 
 	// *** Ranged Attack *** //
 	///Delay timer for spitting
@@ -121,12 +123,6 @@
 
 	// *** Defiler Abilities *** //
 	var/list/available_reagents_define = list() //reagents available for select reagent
-
-	// *** Warrior Abilities *** //
-	///speed increase afforded to the warrior caste when in 'agiility' mode. negative number means faster movement.
-	var/agility_speed_increase = 0 // this opens up possibilities for balancing
-	///amount of soft armor adjusted when in agility mode for the warrior caste. Flat integer amounts only.
-	var/agility_speed_armor = 0 //Same as above
 
 	// *** Boiler Abilities *** //
 	///maximum number of 'globs' of boiler ammunition that can be stored by the boiler caste.
@@ -231,6 +227,8 @@
 	var/evolve_min_xenos = 0
 	// How many of this caste may be alive at once
 	var/maximum_active_caste = INFINITY
+	// Accuracy malus, 0 by default. Should NOT go over 70.
+	var/accuracy_malus = 0
 
 ///Add needed component to the xeno
 /datum/xeno_caste/proc/on_caste_applied(mob/xenomorph)
