@@ -116,11 +116,11 @@
 
 	if(user)
 		item_to_deploy.balloon_alert(user, "Deployed!")
-		user.transferItemToLoc(item_to_deploy, deployed_machine, TRUE)
+		//user.transferItemToLoc(item_to_deploy, deployed_machine, TRUE)
 		if(user.client.prefs.toggles_gameplay & AUTO_INTERACT_DEPLOYABLES)
 			deployed_machine.interact(user)
-	else
-		item_to_deploy.forceMove(deployed_machine)
+	//else
+		//item_to_deploy.forceMove(deployed_machine)
 
 	item_to_deploy.toggle_deployment_flag(TRUE)
 	RegisterSignal(deployed_machine, COMSIG_ITEM_UNDEPLOY, PROC_REF(undeploy))
