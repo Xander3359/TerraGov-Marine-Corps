@@ -1,4 +1,6 @@
-
+/*!
+ * Component given to items that allows them to have physical objects in the world
+ */
 /datum/component/deployable_item
 	///Time it takes for the parent to be deployed.
 	var/deploy_time = 0
