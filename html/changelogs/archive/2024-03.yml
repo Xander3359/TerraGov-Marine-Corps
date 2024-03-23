@@ -342,3 +342,10 @@
   Xander3359:
   - code_imp: cleans species.dm
   - qol: Roomba tries to restock elligible items
+2024-03-23:
+  Barnet2:
+  - rscdel: Removed duplicate intel computers on Gelida IV
+  Lumipharon:
+  - bugfix: 'Campaign: Fixed an issue with towers on Orion Outpost and Patrick''s
+      Rest'
+  - bugfix: 'Campaign: Fixed the sword lunge ability not properly doing damage'
