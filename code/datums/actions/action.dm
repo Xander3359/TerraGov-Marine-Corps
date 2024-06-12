@@ -141,6 +141,7 @@ KEYBINDINGS
 	else
 		button.color = rgb(128, 0, 0, 128)
 
+///Called when the UI element is clicked on
 /datum/action/proc/action_activate()
 	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER) & COMPONENT_ACTION_BLOCK_TRIGGER)
 		return FALSE

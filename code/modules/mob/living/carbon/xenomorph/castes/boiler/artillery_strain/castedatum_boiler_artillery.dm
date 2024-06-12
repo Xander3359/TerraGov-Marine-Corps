@@ -62,9 +62,9 @@
 		/datum/action/ability/xeno_action/xeno_resting,
 		/datum/action/ability/xeno_action/watch_xeno,
 		/datum/action/ability/activable/xeno/psydrain,
-		/datum/action/ability/xeno_action/corrosive_shot,
-		/datum/action/ability/xeno_action/glue_shot,
-		/datum/action/ability/xeno_action/acid_bombard,
+		/datum/action/ability/activable/xeno/corrosive_shot,
+		/datum/action/ability/activable/xeno/glue_shot,
+		/datum/action/ability/activable/xeno/acid_bombard,
 	)
 
 /datum/xeno_caste/boiler/artillery_strain/normal
@@ -83,7 +83,7 @@
 		/datum/action/ability/xeno_action/xeno_resting,
 		/datum/action/ability/xeno_action/watch_xeno,
 		/datum/action/ability/activable/xeno/psydrain,
-		/datum/action/ability/xeno_action/corrosive_shot,
-		/datum/action/ability/xeno_action/glue_shot,
-		/datum/action/ability/xeno_action/acid_bombard,
+		/datum/action/ability/activable/xeno/corrosive_shot,
+		/datum/action/ability/activable/xeno/glue_shot,
+		/datum/action/ability/activable/xeno/acid_bombard,
 	)
