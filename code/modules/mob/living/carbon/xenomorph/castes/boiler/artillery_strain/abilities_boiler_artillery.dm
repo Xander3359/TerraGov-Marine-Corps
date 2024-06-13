@@ -56,21 +56,25 @@
 	ability_cost = 10
 	target_flags = ABILITY_TURF_TARGET
 
-/datum/action/ability/activable/xeno/glue_shot/use_ability(atom/A)
+/datum/action/ability/activable/xeno/glue_shot/use_ability(turf/target_turf)
 	//Sends out a wave of goop which slows down any enemy that walks in it
+	var/mob/living/carbon/xenomorph/xeno_owner = owner
+
 	if(!do_after(xeno_owner, 0.5 SECONDS, NONE, target, BUSY_ICON_DANGER))
 		return fail_activate()
 
 	//Shoot at the thing
 	playsound(xeno_owner.loc, 'sound/effects/blobattack.ogg', 50, 1)
 
-	var/datum/ammo/xeno/glue/glue_spit = GLOB.ammo_list[/datum/ammo/xeno/glue]
+	//XANTODO Make a 1x3 that moves forward and glues all the tiles it spreads
 
-	var/obj/projectile/newglue = new /obj/projectile(get_turf(xeno_owner))
-	newglue.generate_bullet(glue_spit, glue_spit.damage * SPIT_UPGRADE_BONUS(xeno_owner))
-	newglue.def_zone = xeno_owner.get_limbzone_target()
-
-	newglue.fire_at(target, xeno_owner, xeno_owner, newglue.ammo.max_range)
+	var/facing = angle_to_dir(Get_Angle(xeno_owner, target_turf))
+	xeno_owner.setDir(facing)
+	switch(facing)
+		if(NORTH, SOUTH, EAST, WEST)
+			do_glue_spray_cardinal(get_step(xeno_owner, xeno_owner.dir))
+		if(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+			do_glue_spray_diagonal()
 
 	succeed_activate()
 	add_cooldown()
@@ -83,7 +87,17 @@
 	owner.playsound_local(owner, 'sound/voice/alien_drool1.ogg', 25, 0, 1)
 	return ..()
 
-/datum/ammo/xeno/glue
+
+/obj/effect/xenomorph/glue //The glue that actually gets applied to the tiles
+	icon_state = "acid_strong"
+
+/datum/action/ability/activable/xeno/glue_shot/do_glue_spray_cardinal(list/targetted_turfs)
+	for(var/affected_turf in targetted_turfs)
+
+
+/datum/action/ability/activable/xeno/glue_shot/do_glue_spray_diagonal()
+
+
 
 // ***************************************
 // *********** Acid Bombard
