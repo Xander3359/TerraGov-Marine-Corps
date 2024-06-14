@@ -21,7 +21,6 @@
   Lumipharon:
   - bugfix: fixed ghosts drawing on maptables for reals
   - balance: C4 now takes 30 seconds at minimum to detonate on campaign objectives
-  - rscadd: Youtool vendor stocks multitools
   - bugfix: Fixed campaign missions ending causing unintended notifications in some
       instances
   - bugfix: Drop pod blocker objects in Campaign are no longer invisible
@@ -29,7 +28,6 @@
   - bugfix: fixed various throw bugs
   - bugfix: Missing a throw because you tried to hit a missing limb will now properly
       miss and keep going
-  - rscadd: NT base rescue mission is now available for TGMC
   - bugfix: fixed hunter appearing twice in the hive status screen
   Wisemonster:
   - spellcheck: Changed the description of Behemoth's Earth Riser to mention the click-drag
