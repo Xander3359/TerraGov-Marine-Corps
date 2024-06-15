@@ -49,14 +49,8 @@
   - bugfix: TE-X piercing mode no longer inflicts Microwaved due to a code oopsie.
   Lumipharon:
   - rscdel: Stunprods are no longer craftable
-  Pariah919:
-  - rscadd: Added new L-88 Rifle to ICC, and its export variant the L&S EM-88 to Req.
   Wisemonster:
   - spellcheck: Added a description to the "lay egg" ability
-  mc-oofert:
-  - rscadd: T2 Puppeteer xeno, Puppet, Puppeteer abilities, Puppet abilities
-  yyzsong:
-  - rscdel: SLs can no longer buy the AR-55 or its ammo
 2023-10-08:
   Pariah919:
   - qol: EF-88/L-88 added to Valhalla
@@ -148,50 +142,8 @@
   yyzsong:
   - rscadd: Adds the two new ICC guns to valhalla
 2023-10-13:
-  Barnet2:
-  - rscdel: Prison Station is now only voteable on HvH gamemodes.
-  DeltaFire15:
-  - code_imp: Removes an evil operator
-  - bugfix: Xeno neurotoxin now has one less edge case.
-  Lewdcifer:
-  - rscadd: Runners now have a new HUD element that indicates Evasion's remaining
-      duration. This updates in real time and is visible to all xenos.
-  - rscadd: Added Auto-Evasion. Right click or alternate use of Evasion toggles this
-      on and off. While Auto-Evasion is active, it will automatically try to use Evasion
-      again if you get the cooldown reset bonus.
-  - rscdel: Removed Toggle Savage. It has been merged with Pounce as its right click
-      / alternate use, otherwise retaining its usual functionality.
-  - qol: Using Evasion again while it is active will extend its current duration instead
-      of flipping the bird at you and making you wait until Evasion is over.
-  - balance: Pounce will now go through xenos.
-  - refactor: Minor code changes to Pounce. Moved it to Hunter's and gave Runner its
-      own child ability with Toggle Savage.
-  - code_imp: Minor code changes to Evasion that remove unnecessary code and account
-      for other changes.
-  - code_imp: Finishes deprecating a hardcore var that wasn't used anywhere.
-  - bugfix: Fixed a bug where using Pounce interrupted Evasion if it was active.
-  - imageadd: Evasion counter sprites. They suck. Please sprite something better,
-      I beg you.
-  - imageadd: Small indicators on ability icons for visual feedback.
-  - spellcheck: Runner's caste description changed ever so slightly to look and sound
-      better.
   Lumipharon:
-  - balance: Breaching axe attack speed reduced to 15 from 11
-  - bugfix: You can no longer store other drop pods in supply pods
-  - bugfix: You can no longer fit endless mechs into a single clowncar mech pod
-  - balance: FC's sword has a strap and bumpslash
-  - balance: FC's sword has slightly improved attack speed and AP
-  - balance: 'HvH: TGMC guardian and SG loadouts have Tyr 2 instead of Tyr 1'
-  - code_imp: Some code improvements to campaign asset code
   - imageadd: added more campaign assset icons
-  - qol: Campaign firesupport binos show current mode uses and cooldown remaining
-      if applicable
-  - imageadd: added a proper sprite for the teleport blocker in campaign
-  - bugfix: fixed an issue with map tables when their target z-level changes
-  Xander3359:
-  - bugfix: you can no longer make C4 instant
-  hyper2snyper:
-  - rscadd: Hyperscales T90, T37, TL127, T60, TX7, TER, TEC, TEP, TEM, TES, SG29
 2023-10-14:
   Lumipharon:
   - qol: A 1 second stun is applied when returning to base after a campaign mission
@@ -321,6 +273,14 @@
   - bugfix: Fix x8 DRPG crate containing only one DRPG
   yyzsong:
   - rscadd: SLs may buy megaphones from their vendor
+2023-10-19:
+  Lewdcifer:
+  - rscadd: Cement protein bar. Mmm... cement...
+  Lumipharon:
+  - bugfix: SOM officers are properly in job preferences
+  - bugfix: Instant effect assets correctly reapply if obtained multiple times
+  hyper2snyper:
+  - bugfix: Fixes lasguns becoming invisible after changing modes.
 2023-10-24:
   Luxyboo:
   - rscadd: 'Take out bullets from packets and boxes now with right click.
