@@ -153,3 +153,12 @@
   Wisemonster:
   - bugfix: Fixed pyrogen's fireball AoE checking for armor's fire resistance instead
       of acid
+2024-06-16:
+  Lumipharon:
+  - rscadd: Tall grass and fire now partially obscured you similar to water
+  - rscadd: Items now sink in water, partially obscuring them
+  - rscadd: Vehicles canbe submerged like mobs
+  - bugfix: fixed throws messing up pixel_y offset over bodies of water
+  - refactor: refactored submersion code
+  Wisemonster:
+  - bugfix: Fixed pyrogen's melting ground fire using ACID armor instead of FIRE
