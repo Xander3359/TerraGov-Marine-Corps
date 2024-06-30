@@ -1,0 +1,20 @@
+{
+	"red_1":[
+		{
+			"type": "hyperscale",
+			"icon_state": "red_1"
+		}
+	],
+	"red_2":[
+		{
+			"type": "hyperscale",
+			"icon_state": "red_2"
+		}
+	],
+	"red_3":[
+		{
+			"type": "hyperscale",
+			"icon_state": "red_3"
+		}
+	]
+}

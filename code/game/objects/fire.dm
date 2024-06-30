@@ -1,6 +1,3 @@
-// Used for objects created by ammo datums that tend to be more general and can be used in multiple ammo datum files.
-
-
 /////////////////////////////
 //          FIRE           //
 /////////////////////////////
@@ -181,6 +178,46 @@
 	if(burn_level == 0)
 		qdel(src)
 		return PROCESS_KILL
+
+/////////////////////////////
+//     HYPERSCALED FIRE    //
+/////////////////////////////
+/obj/fire/hyperscaled
+	greyscale_config = /datum/greyscale_config/fire
+	greyscale_colors = ARMOR_PALETTE_BLACK
+	flame_color = null
+	light_color = LIGHT_COLOR_FLAME
+
+/obj/fire/hyperscaled/update_icon_state()
+	. = ..()
+	switch(burn_ticks) //Hardcoding the icon_state so that all subtypes can share the same json config
+		if(1 to 9)
+			icon_state = "red_1"
+		if(10 to 25)
+			icon_state = "red_2"
+		if(25 to INFINITY)
+			icon_state = "red_3"
+
+/obj/fire/hyperscaled/pink
+	flame_color = "pink"
+	light_color = COLOR_PINK
+	greyscale_colors = ARMOR_PALETTE_PEARL_PINK
+
+/obj/fire/hyperscaled/dark_red
+	flame_color = "dark_red"
+	light_color = COLOR_DARK_RED
+	greyscale_colors = ARMOR_PALETTE_RED
+
+/obj/fire/hyperscaled/yellow
+	flame_color = "yellow"
+	light_color = COLOR_YELLOW
+	greyscale_colors = ARMOR_PALETTE_LIGHT_YELLOW
+
+/obj/fire/hyperscaled/dark_blue
+	flame_color = "dark_blue"
+	light_color = COLOR_DARK_CYAN
+	greyscale_colors = ARMOR_PALETTE_DARK_BLUE
+
 
 ///////////////////////////////
 //        MELTING FIRE       //

@@ -39,6 +39,10 @@
 	icon_file = 'icons/obj/items/grenade.dmi'
 	json_config = 'code/datums/greyscale/json_configs/xenogrenade.json'
 
+/datum/greyscale_config/fire
+	icon_file = 'icons/effects/fire.dmi'
+	json_config = 'code/datums/greyscale/json_configs/fire.json'
+
 //jaeger visors
 /datum/greyscale_config/visors
 	icon_file = 'icons/mob/modular/visors.dmi'
