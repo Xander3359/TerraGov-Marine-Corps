@@ -77,6 +77,7 @@
 #define COMSIG_KB_GIVE "keybind_give"
 #define COMSIG_KB_HELMETMODULE "keybinding_helmetmodule"
 #define COMSIG_KB_ROBOT_AUTOREPAIR "keybinding_robot_autorepair"
+#define COMSIG_KB_STIMS "keybinding_stims_menu"
 #define COMSIG_KB_SUITLIGHT "keybinding_suitlight"
 #define COMSIG_KB_MOVEORDER "keybind_moveorder"
 #define COMSIG_KB_HOLDORDER "keybind_holdorder"
@@ -95,6 +96,7 @@
 //Weapon related ability keybinds
 #define COMSIG_WEAPONABILITY_AXESWEEP "weaponability_axesweep"
 #define COMSIG_WEAPONABILITY_SWORDLUNGE "weaponability_swordlunge"
+#define COMSIG_WEAPONABILITY_SHIELDBASH "weaponability_shieldbash"
 
 //Implant abilities
 #define COMSIG_IMPLANT_ABILITY_SANDEVISTAN "implant_ability_sandevistan"
@@ -142,6 +144,9 @@
 #define COMSIG_XENOABILITY_CORROSIVE_ACID "xenoability_corrosive_acid"
 #define COMSIG_XENOABILITY_SPRAY_ACID "xenoability_spray_acid"
 #define COMSIG_XENOABILITY_ACID_DASH "xenoability_acid_dash"
+#define COMSIG_XENOABILITY_DODGE "xenoability_dodge"
+#define COMSIG_XENOABILITY_IMPALE "xenoability_impale"
+#define COMSIG_XENOABILITY_TAIL_TRIP "xenoability_tail_trip"
 #define COMSIG_XENOABILITY_XENO_SPIT "xenoability_xeno_spit"
 #define COMSIG_XENOABILITY_HIDE "xenoability_hide"
 #define COMSIG_XENOABILITY_NEUROTOX_STING "xenoability_neurotox_sting"
@@ -169,6 +174,9 @@
 #define COMSIG_XENOABILITY_BOMBARD "xenoability_bombard"
 #define COMSIG_XENOABILITY_ACID_SHROUD "xenoability_acid_shroud"
 #define COMSIG_XENOABILITY_ACID_SHROUD_SELECT "xenoability_acid_shroud_select"
+#define COMSIG_XENOABILITY_SMOKESCREEN_SPIT "xenoability_smokescreen_spit"
+#define COMSIG_XENOABILITY_STEAM_RUSH "xenoability_steam_rush"
+#define COMSIG_XENOABILITY_HIGH_PRESSURE_SPIT "xenoability_high_pressure_spit"
 
 #define COMSIG_XENOABILITY_THROW_HUGGER "xenoability_throw_hugger"
 #define COMSIG_XENOABILITY_CALL_YOUNGER "xenoability_call_younger"
@@ -223,6 +231,8 @@
 #define COMSIG_XENOABILITY_MIRAGE_SWAP "xenoability_mirage_swap"
 
 #define COMSIG_XENOABILITY_SCREECH "xenoability_screech"
+#define COMSIG_XENOABILITY_SCREECH_SWITCH "xenoability_screech_switch"
+
 #define COMSIG_XENOABILITY_PSYCHIC_WHISPER "xenoability_psychic_whisper"
 #define COMSIG_XENOABILITY_TOGGLE_QUEEN_ZOOM "xenoability_toggle_queen_zoom"
 #define COMSIG_XENOABILITY_XENO_LEADERS "xenoability_xeno_leaders"
