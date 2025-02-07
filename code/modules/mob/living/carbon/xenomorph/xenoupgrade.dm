@@ -319,6 +319,13 @@
 	upgrade = XENO_UPGRADE_PRIMO
 	upgrade_stored = TIER_THREE_THRESHOLD
 
+/mob/living/carbon/xenomorph/boiler/corroser
+	upgrade = XENO_UPGRADE_NORMAL
+
+/mob/living/carbon/xenomorph/boiler/corroser/primordial
+	upgrade = XENO_UPGRADE_PRIMO
+	upgrade_stored = TIER_THREE_THRESHOLD
+
 //---BOILER END---//
 //============//
 //---DEFENDER START---//

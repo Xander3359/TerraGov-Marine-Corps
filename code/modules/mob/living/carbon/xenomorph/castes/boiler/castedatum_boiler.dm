@@ -78,6 +78,9 @@
 /datum/xeno_caste/boiler/sizzler/normal
 	upgrade = XENO_UPGRADE_NORMAL
 
+/datum/xeno_caste/boiler/corroser/normal
+	upgrade = XENO_UPGRADE_NORMAL
+
 /datum/xeno_caste/boiler/primordial
 	upgrade_name = "Primordial"
 	caste_desc = "A horrendously effective alien siege engine."
@@ -143,3 +146,23 @@
 		/datum/action/ability/xeno_action/steam_rush,
 		/datum/action/ability/activable/xeno/high_pressure_spit,
 	)
+
+/datum/xeno_caste/boiler/corroser
+	caste_type_path = /mob/living/carbon/xenomorph/boiler/corroser
+	upgrade_name = ""
+	caste_name = "Corroser"
+	display_name = "Corroser"
+	upgrade = XENO_UPGRADE_BASETYPE
+	caste_desc = "XANTODO DESC."
+
+	actions = list(
+		/datum/action/ability/xeno_action/xeno_resting,
+		/datum/action/ability/xeno_action/watch_xeno,
+		/datum/action/ability/activable/xeno/psydrain,
+		/datum/action/ability/xeno_action/place_acidwell,
+		/datum/action/ability/activable/xeno/corrosive_acid/strong,
+	)
+
+/datum/xeno_caste/boiler/corroser/primordial
+	upgrade_name = "Primordial"
+	upgrade = XENO_UPGRADE_PRIMO

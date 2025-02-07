@@ -41,3 +41,8 @@
 /mob/living/carbon/xenomorph/boiler/sizzler/Initialize(mapload)
 	. = ..()
 	ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/airburst]
+
+/mob/living/carbon/xenomorph/boiler/corroser
+	caste_base_type = /datum/xeno_caste/boiler/corroser
+	icon = 'icons/Xeno/castes/corroser.dmi'
+	icon_state = "Corroser Walking"
