@@ -45,7 +45,7 @@
 	permeability_coefficient = 1
 	gas_transfer_coefficient = 1
 
-	actions_types = list(/datum/action/item_action/toggle/suit_toggle)
+	actions_types = list(/datum/action/item_action/toggle/suit_toggle/light)
 
 	attachments_by_slot = list(
 		ATTACHMENT_SLOT_CHESTPLATE,
@@ -252,7 +252,7 @@
 	allowed_uniform_type = /obj/item/clothing/under/rank/clown/erp
 
 /obj/item/clothing/suit/modular/hardsuit_exoskeleton
-	name = "FleckTex WY-01 modular exoskeleton"
+	name = "\improper FleckTex WY-01 modular exoskeleton"
 	desc = "FleckTex Dynamics brand new modular hardsuit exoskeleton, designed for full compatiability with jaeger modules. Comes with pre-installed light armour-plating and a shoulder lamp. Mount armor pieces to it by clicking on the frame with the components. Use Alt-Click to remove any attached items."
 	icon_state = "exoskeleton"
 	worn_icon_state = "exoskeleton"
