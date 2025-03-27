@@ -433,10 +433,13 @@ GLOBAL_LIST_INIT(strain_list, init_glob_strain_list())
 	var/list/tunnels = list()
 	///Number of huggers the xeno is currently carrying
 	var/huggers = 0
+
 	///Boiler acid ammo
 	var/corrosive_ammo = 0
 	///Boiler Neuro ammo
 	var/neuro_ammo = 0
+	/// Corroser charges
+	var/bombardments = 0
 
 	COOLDOWN_DECLARE(xeno_health_alert_cooldown)
 

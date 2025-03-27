@@ -158,6 +158,8 @@
 		/datum/action/ability/activable/xeno/psydrain,
 		/datum/action/ability/xeno_action/place_acidwell,
 		/datum/action/ability/activable/xeno/corrosive_acid/strong,
+		//---Corroser Specific
+		/datum/action/ability/activable/xeno/corroser_bombard,
 	)
 
 /datum/xeno_caste/boiler/corroser/primordial
