@@ -3,8 +3,6 @@
 //NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 
-GLOBAL_LIST_INIT(all_supply_groups, list("Operations", "Weapons", "Smartguns", "Explosives", "Armor", "Clothing", "Medical", "Engineering", "Supplies", "Imports", "Vehicles", "Factory"))
-
 /datum/supply_packs
 	var/name
 	var/notes
@@ -22,6 +20,7 @@ GLOBAL_LIST_INIT(all_supply_groups, list("Operations", "Weapons", "Smartguns", "
 	for(var/i in contains)
 		var/atom/movable/AM = i
 		new AM(location)
+
 
 
 /*******************************************************************************
@@ -79,7 +78,7 @@ OPERATIONS
 	cost = 130
 
 /datum/supply_packs/operations/deployable_camera
-	name = "3 Deployable cameras"
+	name = "3 deployable cameras"
 	contains = list(
 		/obj/item/deployable_camera,
 		/obj/item/deployable_camera,
@@ -214,22 +213,22 @@ WEAPONS
 	cost = 100
 
 /datum/supply_packs/weapons/sentry_flamer
-	name = "SFT-575 Flamethrower Sentry"
+	name = "SFT-575 flamethrower sentry"
 	contains = list(/obj/item/storage/box/crate/sentry_flamer)
 	cost = 400
 
 /datum/supply_packs/weapons/sentry_flamer_ammo
-	name = "SFT-575 Flamethrower Sentry Ammo"
+	name = "SFT-575 flamethrower sentry ammo"
 	contains = list(/obj/item/ammo_magazine/sentry/flamer)
 	cost = 150
 
 /datum/supply_packs/weapons/sentry_laser
-	name = "SLT-576 Laser Sentry"
+	name = "SLT-576 laser sentry"
 	contains = list(/obj/item/storage/box/crate/sentry_laser)
 	cost = 400
 
 /datum/supply_packs/weapons/sentry_laser_ammo
-	name = "SLT-576 Laser Sentry Ammo"
+	name = "SLT-576 laser sentry ammo"
 	contains = list(/obj/item/ammo_magazine/sentry/laser)
 	cost = 200
 
@@ -599,7 +598,7 @@ WEAPONS
 	cost = 1000
 
 /datum/supply_packs/weapons/shotguntracker
-	name = "12 gauge tracker thells"
+	name = "12 gauge tracker shells"
 	contains = list(/obj/item/ammo_magazine/shotgun/tracker)
 	cost = 50
 	available_against_xeno_only = TRUE
@@ -1235,7 +1234,7 @@ CLOTHING
 	cost = 100
 
 /datum/supply_packs/clothing/marine_outfits
-	name = "mMarine outfits"
+	name = "Marine outfits"
 	contains = list(
 		/obj/item/clothing/under/marine,
 		/obj/item/storage/belt/marine,
@@ -1558,6 +1557,11 @@ ENGINEERING
 	name = "Teleporter pads"
 	contains = list(/obj/effect/teleporter_linker)
 	cost = 500
+
+/datum/supply_packs/engineering/tesla_turret
+	name = "Tesla turret"
+	contains = list(/obj/item/tesla_turret)
+	cost = 250
 
 /*******************************************************************************
 SUPPLIES
@@ -2171,6 +2175,11 @@ VEHICLES
 	contains = list(/obj/item/ammo_magazine/tank/microrocket_rack)
 	cost = 10
 
+/datum/supply_packs/vehicles/repairpack
+	name = "Mech repairpack"
+	contains = list(/obj/item/repairpack)
+	cost = 10
+
 /*******************************************************************************
 FACTORY
 *******************************************************************************/
@@ -2623,3 +2632,4 @@ FACTORY
 	name = "500 cigarettes assembly refill"
 	contains = list(/obj/item/factory_refill/cigarette_refill)
 	cost = 500
+
